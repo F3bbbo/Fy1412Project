@@ -1,14 +1,16 @@
 #include <SFML/Graphics.hpp>
-#include "StartButton.h"
-#include "GUI.h"
+#include <SFML/Audio.hpp>
+#include "Game.h"
+#include <iostream>
 
+using namespace std;
 int main()
 {
+	Game game; // le game class
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "Physics Project Fy1412");
 	//test
-	sf::Mouse mouse;
-	StartButton button("Textures\\gui\\StartButton.png");
-	button.setSize(100, 20);
+	sf::Clock gametime;
+
 
 	while (window.isOpen())
 	{
@@ -19,9 +21,9 @@ int main()
 				window.close();
 		}
 		//Update
-		button.update(mouse.getPosition(window), mouse.isButtonPressed(sf::Mouse::Button::Left));
+		game.Update(gametime.restart().asSeconds(),window);
 		window.clear();
-		window.draw(button);
+		window.draw(game);
 		window.display();
 	}
 

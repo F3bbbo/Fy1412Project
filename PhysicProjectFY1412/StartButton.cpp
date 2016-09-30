@@ -12,6 +12,7 @@ StartButton::StartButton(std::string spriteFileName)
 
 }
 
+
 StartButton::~StartButton()
 {
 

@@ -23,6 +23,8 @@ Button::~Button()
 
 }
 
+
+
 void Button::update(sf::Vector2i mousePos, bool buttonPressed)
 {
 	sf::FloatRect boundingBox;
