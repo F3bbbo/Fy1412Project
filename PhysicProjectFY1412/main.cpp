@@ -1,12 +1,15 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include "Game.h"
+#include "GuI.h"
 #include <iostream>
 
 using namespace std;
 int main()
 {
 	Game game; // le game class
+	GUI gui;
+	sf::Mouse mouse;
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "Physics Project Fy1412");
 	//test
 	sf::Clock gametime;
@@ -21,9 +24,11 @@ int main()
 				window.close();
 		}
 		//Update
+		gui.update(game, mouse, window);
 		game.Update(gametime.restart().asSeconds(),window);
 		window.clear();
 		window.draw(game);
+		window.draw(gui);
 		window.display();
 	}
 

@@ -1,8 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include <SFML/Graphics.hpp>
-#include "StartButton.h"
-#include "GUI.h"
+#include "Rocket.h"
 #include <string>
 //#include "circle.h"
 #include <vector>
@@ -12,8 +11,7 @@ class Game : public sf::Drawable
 {
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	sf::Mouse mouse;
-	StartButton *button;
+	Rocket rocket;
 //	std::vector<Circles> circle;
 public:
 	Game();

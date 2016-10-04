@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <iostream>
+#include "Game.h"
 
 class Button : public sf::Drawable
 {
@@ -16,7 +17,7 @@ public:
 	Button();
 	Button(std::string spriteFileName);
 	~Button();
-	void update(sf::Vector2i mousePos, bool buttonPressed);
+	void update(Game &game, sf::Vector2i mousePos, bool buttonPressed);
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	void setPosition(float x, float y);
 	void setSize(float x, float y);

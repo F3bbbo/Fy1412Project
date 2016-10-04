@@ -25,7 +25,7 @@ Button::~Button()
 
 
 
-void Button::update(sf::Vector2i mousePos, bool buttonPressed)
+void Button::update(Game &game, sf::Vector2i mousePos, bool buttonPressed)
 {
 	sf::FloatRect boundingBox;
 	boundingBox = buttonSprite.getGlobalBounds();
