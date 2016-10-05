@@ -149,6 +149,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="C:\Users\Dean\Desktop\som sk aföras över\Collision.cpp" />
+    <ClCompile Include="C:\Users\Dean\Desktop\som sk aföras över\Triangle.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
@@ -157,6 +159,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="C:\Users\Dean\Desktop\som sk aföras över\Collision.h" />
+    <ClInclude Include="C:\Users\Dean\Desktop\som sk aföras över\Triangel.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="Rocket.h" />
