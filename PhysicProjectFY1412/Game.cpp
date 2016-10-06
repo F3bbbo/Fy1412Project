@@ -17,7 +17,7 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 }
 void Game::Update(sf::RenderWindow & window)
 {
-	dt = clock.getElapsedTime().asSeconds();
+	dt = clock.restart().asSeconds();
 }
 
 void Game::rocketSpin(int degree)

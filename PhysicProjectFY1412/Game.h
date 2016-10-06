@@ -17,8 +17,8 @@ public:
 	Game();
 	~Game();
 	void Update(sf::RenderWindow & window);
-	void rocketSpin(float degree);
-	void rocketSpin(int scale);
+	void rocketSpin(float scale);
+	void rocketSpin(int degree);
 };
 
 
