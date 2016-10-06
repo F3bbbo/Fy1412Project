@@ -8,6 +8,11 @@ Rocket::Rocket()
 	//Set textures
 	rocketSprite.setTexture(rocketTex);
 	fireSprite.setTexture(fireTex);
+	//Scaling
+	float scale = 0.5;
+	rocketSprite.scale(scale, scale);
+	fireSprite.scale(scale, scale);
+
 	//Sets origin of rocket and fire to the same point
 	float halfRocketWidth = rocketSprite.getLocalBounds().width / 2;
 	float halfRocketHeight = rocketSprite.getLocalBounds().height / 2;
@@ -18,7 +23,6 @@ Rocket::Rocket()
 	pos = sf::Vector2f(400, 400);
 	rocketSprite.setPosition(pos);
 	fireSprite.setPosition(pos);
-
 	exhausting = true;
 }
 
@@ -38,5 +42,12 @@ void Rocket::draw(sf::RenderTarget & target, sf::RenderStates states) const
 
 void Rocket::setPos(float x, float y)
 {
-	
+	rocketSprite.setPosition(x, y);
+	fireSprite.setPosition(x, y);
+}
+
+void Rocket::rotate(float degree)
+{
+	rocketSprite.rotate(degree);
+	fireSprite.rotate(degree);
 }

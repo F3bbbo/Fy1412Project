@@ -16,6 +16,7 @@ public:
 	~Rocket();
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	void setPos(float x, float y);
+	void rotate(float degree);
 };
 
 

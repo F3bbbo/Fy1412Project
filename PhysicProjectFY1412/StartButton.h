@@ -6,7 +6,7 @@
 class StartButton : public Button
 {
 private:
-	virtual void onClick() const;
+	virtual void onClick(Game &game) const;
 public:
 	StartButton();
 	StartButton(std::string spriteFileName);
