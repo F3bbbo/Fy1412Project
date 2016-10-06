@@ -12,19 +12,15 @@ private:
 	bool clickedLastFrame = false;
 	sf::Sprite buttonSprite;
 	sf::Texture buttonTexture;
-	virtual void onClick(Game &game) const =0;
-	virtual void onPress(Game &game) const;
+	virtual void onClick() const =0;
 public:
 	Button();
 	Button(std::string spriteFileName);
-	virtual ~Button();
+	~Button();
 	void update(Game &game, sf::Vector2i mousePos, bool buttonPressed);
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	void setPosition(float x, float y);
 	void setSize(float x, float y);
-	void setScale(float x, float y);
-	void scale(float x, float y);
-	void flipButton(bool up, bool side);
 };
 
 #endif

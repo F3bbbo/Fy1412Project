@@ -12,6 +12,7 @@ int main()
 	sf::Mouse mouse;
 	sf::RenderWindow window(sf::VideoMode(1000, 1000), "Physics Project Fy1412");
 	//test
+	sf::Clock gametime;
 
 
 	while (window.isOpen())
@@ -24,7 +25,7 @@ int main()
 		}
 		//Update
 		gui.update(game, mouse, window);
-		game.Update(window);
+		game.Update(gametime.restart().asSeconds(),window);
 		window.clear();
 		window.draw(game);
 		window.draw(gui);

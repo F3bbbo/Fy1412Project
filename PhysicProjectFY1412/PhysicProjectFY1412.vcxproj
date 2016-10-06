@@ -153,7 +153,6 @@
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rocket.cpp" />
-    <ClCompile Include="RotationButton.cpp" />
     <ClCompile Include="StartButton.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +160,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="Rocket.h" />
-    <ClInclude Include="RotationButton.h" />
     <ClInclude Include="StartButton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

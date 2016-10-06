@@ -18,7 +18,7 @@ StartButton::~StartButton()
 
 }
 
-void StartButton::onClick(Game &game) const
+void StartButton::onClick() const
 {
 	std::cout << "Start Button Pressed! " << std::endl;
 }
