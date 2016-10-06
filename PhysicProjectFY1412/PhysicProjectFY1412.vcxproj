@@ -149,22 +149,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
-    <ClCompile Include="C:\Users\Dean\Desktop\som sk aföras över\Collision.cpp" />
-    <ClCompile Include="C:\Users\Dean\Desktop\som sk aföras över\Triangle.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rocket.cpp" />
+    <ClCompile Include="RotationButton.cpp" />
     <ClCompile Include="StartButton.cpp" />
+    <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
-    <ClInclude Include="C:\Users\Dean\Desktop\som sk aföras över\Collision.h" />
-    <ClInclude Include="C:\Users\Dean\Desktop\som sk aföras över\Triangel.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="Rocket.h" />
+    <ClInclude Include="RotationButton.h" />
     <ClInclude Include="StartButton.h" />
+    <ClInclude Include="Triangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

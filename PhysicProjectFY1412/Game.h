@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 #include "Rocket.h"
 #include <string>
-//#include "circle.h"
 #include <vector>
 
 using namespace std;
@@ -11,12 +10,15 @@ class Game : public sf::Drawable
 {
 private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+	sf::Clock clock;
+	float dt;
 	Rocket rocket;
-//	std::vector<Circles> circle;
 public:
 	Game();
 	~Game();
-	void Update(float dt, sf::RenderWindow & window);
+	void Update(sf::RenderWindow & window);
+	void rocketSpin(float degree);
+	void rocketSpin(int scale);
 };
 
 
