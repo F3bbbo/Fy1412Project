@@ -28,7 +28,7 @@ int main()
 		window.clear();
 		window.draw(game);
 		window.draw(gui);
-		window.display();
+		window.display(); 
 	}
 
 	return 0;

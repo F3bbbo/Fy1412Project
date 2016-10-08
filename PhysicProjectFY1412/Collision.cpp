@@ -24,17 +24,17 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	c1 = trianglepoint1 - circle;
 	c2 = trianglepoint2 - circle;
 	c3 = trianglepoint3 - circle;
-	if ((c1.x*c1.x + c1.y*c1.y) <= radius1)
+	if (sqrt(c1.x*c1.x + c1.y*c1.y) <= (radius1))
 	{
 		return true;
 	}
-	if ((c2.x*c2.x + c2.y*c2.y) <= radius1)
+	if (sqrt(c2.x*c2.x + c2.y*c2.y) <= (radius1))
 	{
 
 		return true;
 	}
 
-	if ((c3.x*c3.x + c3.y*c3.y) <= radius1)
+	if (sqrt(c3.x*c3.x + c3.y*c3.y) <= (radius1))
 	{
 		return true;
 	}
@@ -68,7 +68,13 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 															   return true;
 															   }
 															   */
-	OV = OT + OL;
+
+
+	if (length<0.f || length>
+
+
+
+	OV = OT - OL;
 	if (sqrt(OV.x*OV.x + OV.y*OV.y) <= radius1)
 	{
 		return true;
@@ -82,7 +88,7 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	length = OT.x*c2.x + OT.y*c2.y;
 	OL.x = c2.x *length;
 	OL.y = c2.y * length;
-	OV = OT + OL;
+	OV = OT - OL;
 	if (sqrt(OV.x*OV.x + OV.y*OV.y) <= radius1)
 	{
 		return true;
@@ -95,7 +101,7 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	length = OT.x*c3.x + OT.y*c3.y;
 	OL.x = c3.x*length;
 	OL.y = c3.y * length;
-	OV = OT + OL;
+	OV = OT - OL;
 	if (sqrt(OV.x*OV.x + OV.y*OV.y) <= radius1)
 	{
 		return true;
@@ -105,7 +111,7 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	//test tre circle in triangle 
 	//tar normalerna för cirkeln och projecerar den på normalen för trianglen
 	//
-
+/*
 
 	//side normal1
 	c1 = trianglepoint1 - circle;  //creates stage1
@@ -147,7 +153,7 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 		}
 	}
 
-
+	*/
 	return false;
 }
 

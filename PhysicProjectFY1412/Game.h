@@ -6,7 +6,7 @@
 #include <vector>
 #include "circle.h"
 #include "Collision.h"
-
+#include "Triangle.h"
 using namespace std;
 class Game : public sf::Drawable
 {
@@ -16,6 +16,8 @@ private:
 	float dt;
 	Rocket rocket;
 	std::vector<Circles> circle;
+	std::vector<Triangles>Triangle;
+
 public:
 	Game();
 	~Game();
