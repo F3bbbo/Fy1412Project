@@ -54,8 +54,6 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	//test två edges collision;
 	sf::Vector2f OL;
 	c1 = trianglepoint2 - trianglepoint1; //side 1
-	c2 = trianglepoint1 - trianglepoint3; //side 2
-	c3 = trianglepoint3 - trianglepoint2; //side 3
 	sf::Vector2f OT; //line between circle center and start of ray.  
 	sf::Vector2f OV; //line from circle to OL                        _--* trianglepoint1
 	OT = trianglepoint1 - circle;                         //    OT_--  /   /
@@ -76,7 +74,33 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 		return true;
 	}
 
-	//	OT = 
+
+	c2 = trianglepoint3 - trianglepoint1; //side 2
+	OT = trianglepoint1 - circle;
+	normaliser = sqrt(c2.x*c2.x + c2.y*c2.y);
+	c2 = c2 / normaliser;
+	length = OT.x*c2.x + OT.y*c2.y;
+	OL.x = c2.x *length;
+	OL.y = c2.y * length;
+	OV = OT + OL;
+	if (sqrt(OV.x*OV.x + OV.y*OV.y) <= radius1)
+	{
+		return true;
+	}
+
+	c3 = trianglepoint3 - trianglepoint2; //side 3
+	OT = trianglepoint3 - circle;
+	normaliser = sqrt(c3.x*c3.x + c3.y*c3.y);
+	c3 = c3 / normaliser;
+	length = OT.x*c3.x + OT.y*c3.y;
+	OL.x = c3.x*length;
+	OL.y = c3.y * length;
+	OV = OT + OL;
+	if (sqrt(OV.x*OV.x + OV.y*OV.y) <= radius1)
+	{
+		return true;
+	}
+
 
 	//test tre circle in triangle 
 	//tar normalerna för cirkeln och projecerar den på normalen för trianglen

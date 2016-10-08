@@ -24,7 +24,7 @@ int main()
 		}
 		//Update
 		gui.update(game, mouse, window);
-		game.Update(window);
+		game.Update(window,mouse);
 		window.clear();
 		window.draw(game);
 		window.draw(gui);

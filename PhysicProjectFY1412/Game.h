@@ -4,6 +4,8 @@
 #include "Rocket.h"
 #include <string>
 #include <vector>
+#include "circle.h"
+#include "Collision.h"
 
 using namespace std;
 class Game : public sf::Drawable
@@ -13,10 +15,11 @@ private:
 	sf::Clock clock;
 	float dt;
 	Rocket rocket;
+	std::vector<Circles> circle;
 public:
 	Game();
 	~Game();
-	void Update(sf::RenderWindow & window);
+	void Update(sf::RenderWindow & window, sf::Mouse &mouse);
 	void rocketSpin(float scale);
 	void rocketSpin(int degree);
 };
