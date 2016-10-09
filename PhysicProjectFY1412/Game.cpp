@@ -39,10 +39,10 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 		String = to_string(Number);
 		cout << "yvalue " << String << endl;
 	}
-//	circle[0].setplacex(mouse.getPosition(window).x);
-//	circle[0].setplacey(mouse.getPosition(window).y);
-	circle[0].setplacex(376);
-	circle[0].setplacey(322);
+	circle[0].setplacex(mouse.getPosition(window).x);
+	circle[0].setplacey(mouse.getPosition(window).y);
+//	circle[0].setplacex(376);
+//	circle[0].setplacey(322);
 
 	if (true == collisioncheckbetweencirclesandtriangle(circle[0].getplacex(), circle[0].getplacey(), circle[0].getradius(), Triangle[0].getpoint1(), Triangle[0].getpoint2(), Triangle[0].getpoint3(),Triangle[0].getside1normal(),Triangle[0].getside2normal(),Triangle[0].getside3normal()))
 		cout << "woorks" << endl;
