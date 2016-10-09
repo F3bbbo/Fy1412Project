@@ -13,7 +13,13 @@ bool collisioncheckbetweencircles(float x1, float y1, float radius1, float x2, f
 
 	return false;
 }
+float lengthfunction(sf::Vector2f vector)
+{
+	
+return sqrt(vector.x*vector.x + vector.y*vector.y);
 
+
+}
 bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, sf::Vector2f trianglepoint1, sf::Vector2f trianglepoint2, sf::Vector2f trianglepoint3, sf::Vector2f side1normal, sf::Vector2f side2normal, sf::Vector2f side3normal)
 {
 	//test one points inside circle
@@ -69,18 +75,22 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 															   }
 															   */
 
-
-	if (length<0.f || length>
-
-
-
-	OV = OT - OL;
-	if (sqrt(OV.x*OV.x + OV.y*OV.y) <= radius1)
+	//|| length>lengthfunction(trianglepoint2 - trianglepoint1) - radius1
+	if ((length<-radius1) || (length>(lengthfunction(trianglepoint1 - trianglepoint2) + radius1)))
 	{
-		return true;
+
 	}
+   else
+	{
 
+		OV = OT - OL;
+		if (sqrt(OV.x*OV.x + OV.y*OV.y) <= radius1)
+		{
+			return true;
+		}
 
+  }
+	/*
 	c2 = trianglepoint3 - trianglepoint1; //side 2
 	OT = trianglepoint1 - circle;
 	normaliser = sqrt(c2.x*c2.x + c2.y*c2.y);
@@ -106,7 +116,7 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	{
 		return true;
 	}
-
+	*/
 
 	//test tre circle in triangle 
 	//tar normalerna för cirkeln och projecerar den på normalen för trianglen
