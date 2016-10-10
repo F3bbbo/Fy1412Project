@@ -7,7 +7,7 @@ Game::Game()
 	Triangle = std::vector<Triangles>(0);
 	Triangles tringle1 = Triangles(sf::Vector2f(389, 277), sf::Vector2f(360, 372), sf::Vector2f(429, 371), sf::Vector2f(0, 1), sf::Vector2f(1, 0), sf::Vector2f(-1, 0));
 	Triangle.push_back(tringle1);
-	Circles circle1 = Circles(20, 4, 5);
+	Circles circle1 = Circles(60, 0, 0);
 	circle.push_back(circle1);
 //	circle1 = Circles(25, 6, 5);
 	circle1.setplacex(6);

@@ -22,6 +22,8 @@ return sqrt(vector.x*vector.x + vector.y*vector.y);
 }
 bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, sf::Vector2f trianglepoint1, sf::Vector2f trianglepoint2, sf::Vector2f trianglepoint3, sf::Vector2f side1normal, sf::Vector2f side2normal, sf::Vector2f side3normal)
 {
+	x1 = x1+60;
+	y1 = y1+60;
 	//test one points inside circle
 	sf::Vector2f circle; // circle center
 	circle.x = x1;
