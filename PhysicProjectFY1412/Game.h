@@ -7,6 +7,7 @@
 #include "circle.h"
 #include "Collision.h"
 #include "Triangle.h"
+#include "Earth.h"
 using namespace std;
 class Game : public sf::Drawable
 {
@@ -15,7 +16,7 @@ private:
 	sf::Clock clock;
 	float dt;
 	Rocket rocket;
-	
+	Earth earth;
 
 public:
 	Game();
