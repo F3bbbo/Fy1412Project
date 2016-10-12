@@ -153,7 +153,6 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
-    <ClCompile Include="kvadrat.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="RotationButton.cpp" />
@@ -166,7 +165,6 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
-    <ClInclude Include="kvadrat.h" />
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="RotationButton.h" />
     <ClInclude Include="StartButton.h" />

@@ -45,9 +45,6 @@
     <ClCompile Include="Circle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="kvadrat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h">
@@ -75,9 +72,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="circle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="kvadrat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
