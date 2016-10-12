@@ -31,6 +31,8 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 		String = to_string(Number);
 		cout << "yvalue " << String << endl;
 	}
+	if (true == rocket.colision(earth.circlerxy()))
+		cout << "works" << endl;
 
 //	circle[0].setplacex(376);
 //	circle[0].setplacey(322);

@@ -31,10 +31,10 @@ Rocket::Rocket()
 	Triangles tringle1 = Triangles(140);
 	Triangle.push_back(tringle1);
 	Triangle[0].setorigin(sf::Vector2f( halfRocketWidth, halfRocketHeight));
-	Triangle[0].setpoisiton(pos);
+	Triangle[0].setpoisiton(sf::Vector2f(pos.x,pos.y));
 	Triangle[0].scale(sf::Vector2f(scale, scale));
 	Triangle[0].Triangleuppdate();
-	Circles circle1 = Circles(30, 0, 0);
+	Circles circle1 = Circles(10, 0, 0);
 	circle.push_back(circle1);
 }
 
@@ -71,18 +71,29 @@ void Rocket::rotate(float degree)
 {
 	rocketSprite.rotate(degree);
 	fireSprite.rotate(degree);
+	Triangle[0].rotatetriangle(degree);
 	
 
 }
 
+bool Rocket::colision(sf::Vector3f circle)
+{
+
+	if (true == collisioncheckbetweencirclesandtriangle(circle.x, circle.y, circle.z, Triangle[0].getpoint1(), Triangle[0].getpoint2(), Triangle[0].getpoint3(), Triangle[0].getside1normal(), Triangle[0].getside2normal(), Triangle[0].getside3normal()))
+		return true;
+
+
+	return false;
+}
+
 void Rocket::update(sf::Mouse & mouse, sf::Window & window)
 {
-	if (true == collisioncheckbetweencirclesandtriangle(circle[0].getplacex(), circle[0].getplacey(), circle[0].getradius(), Triangle[0].getpoint1(), Triangle[0].getpoint2(), Triangle[0].getpoint3(), Triangle[0].getside1normal(), Triangle[0].getside2normal(), Triangle[0].getside3normal()))
+	if (true == collisioncheckbetweencirclesandtriangle(circle[0].getplacex() + circle[0].getradius(), circle[0].getplacey() + circle[0].getradius(), circle[0].getradius(), Triangle[0].getpoint1(), Triangle[0].getpoint2(), Triangle[0].getpoint3(), Triangle[0].getside1normal(), Triangle[0].getside2normal(), Triangle[0].getside3normal()))
 				std::cout << "woorks" << std::endl;
 	circle[0].setplacex(mouse.getPosition(window).x);
 	circle[0].setplacey(mouse.getPosition(window).y);
-
-
+//	Triangle[0].setpoisiton((sf::Vector2f(mouse.getPosition(window).x,mouse.getPosition(window).y)));
+	Triangle[0].Triangleuppdate();
 
 
 }

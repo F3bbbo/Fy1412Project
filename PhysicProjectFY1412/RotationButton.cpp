@@ -13,6 +13,7 @@ void RotationButton::onClick(Game &game) const
 void RotationButton::onPress(Game & game) const
 {
 	game.rocketSpin(pressRot);
+
 }
 
 RotationButton::RotationButton(std::string textureFile, float rotation)

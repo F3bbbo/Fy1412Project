@@ -161,7 +161,8 @@ void Triangles::setside3normal(sf::Vector2f side3normal)
 
 void Triangles::rotatetriangle(float degree)
 {
-	
+	triangle.rotate(degree);
+	Triangleuppdate();
 }
 
 void Triangles::movetolocalspaceandrotatetriangle(sf::Vector2f rocketpos, float degree)

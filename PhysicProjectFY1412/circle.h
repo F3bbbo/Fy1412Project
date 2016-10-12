@@ -19,6 +19,9 @@ public:
 	Circles(int, int, int);
 	~Circles();
 	//	void color(sf::Color::Red);
+	void setpoisiton(sf::Vector2f);
+	void setorigin(sf::Vector2f);
+	void scale(sf::Vector2f);
 	void SetFillColor(sf::Color color);
 	int getradius();
 	int getplacex();

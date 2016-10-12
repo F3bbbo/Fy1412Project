@@ -21,6 +21,7 @@ public:
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	void setPos(float x, float y);
 	void rotate(float degree);
+	bool colision(sf::Vector3f circle);
 	void update(sf::Mouse &mouse, sf::Window &window);
 };
 

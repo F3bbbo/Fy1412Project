@@ -9,7 +9,20 @@ Circles::Circles(int radius, int placex, int placey)
 	circle.setPosition(sf::Vector2f(placex, placey));
 }
 
-Circles::~Circles() {};
+Circles::~Circles() {}
+void Circles::setpoisiton(sf::Vector2f position)
+{
+	circle.setPosition(position);
+}
+void Circles::setorigin(sf::Vector2f Origin)
+{
+	circle.setOrigin(Origin);
+}
+void Circles::scale(sf::Vector2f scale)
+{
+	circle.setScale(scale);
+}
+;
 void Circles::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	target.draw(circle);
