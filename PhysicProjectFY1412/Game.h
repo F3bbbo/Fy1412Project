@@ -15,8 +15,7 @@ private:
 	sf::Clock clock;
 	float dt;
 	Rocket rocket;
-	std::vector<Circles> circle;
-	std::vector<Triangles>Triangle;
+	
 
 public:
 	Game();
