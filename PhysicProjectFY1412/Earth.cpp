@@ -50,5 +50,5 @@ sf::Vector3f Earth::circlerxy()
 {
 	
 
-	return sf::Vector3f(920, 540, radius*0.425);
+	return sf::Vector3f(920, 540, radius*0.417);
 }
