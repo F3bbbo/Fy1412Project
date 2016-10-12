@@ -20,6 +20,7 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 {
 	rocket.update(mouse, window);
+	earth.update(mouse, window);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
 	{
 		int Number = mouse.getPosition(window).x;

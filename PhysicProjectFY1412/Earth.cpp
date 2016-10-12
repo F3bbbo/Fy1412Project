@@ -4,11 +4,11 @@ Earth::Earth()
 {
 	EarthTex.loadFromFile("Textures\\game\\jorden\\jorden.png");
 	EarthSprite.setTexture(EarthTex);
-	float scale = 1;
+	float scale = 0.5;
 	EarthSprite.scale(scale, scale);
 	float radius = EarthSprite.getLocalBounds().width/2;
 	EarthSprite.setOrigin(radius, radius);
-	pos = sf::Vector2f(600, 500);
+	pos = sf::Vector2f(920, 540);
 	EarthSprite.setPosition(pos);
 }
 
