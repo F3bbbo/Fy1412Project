@@ -36,6 +36,17 @@ Rocket::Rocket()
 	Triangle[0].Triangleuppdate();
 	Circles circle1 = Circles(10, 0, 0);
 	circle.push_back(circle1);
+
+	//Set physics variables
+	physics.angle = 0;
+	physics.dMass = 1000;
+	physics.fuelMass = 5000;
+	physics.rocketMass = 1000;
+	physics.VeSize = 1000;
+	physics.velocity = 0;
+	physics.position = getWorldPos(pos);
+	setDir(physics.angle);
+	std::cout << physics.position.x << " " << physics.position.y << std::endl;
 }
 
 Rocket::~Rocket()
@@ -67,13 +78,70 @@ void Rocket::setPos(float x, float y)
 	Triangle[0].setpoisiton(sf::Vector2f(x,y));	
 }
 
+void Rocket::setRotation(float degree)
+{
+	rocketSprite.setRotation(degree);
+	fireSprite.setRotation(degree);
+
+	//set physics variables
+	physics.angle = degree;
+}
+
+void Rocket::setDir(float degree)
+{
+	physics.dir.x = sin(degree);
+	physics.dir.y = -cos(degree);
+}
+
+float Rocket::thrustForce()
+{
+	return physics.dMass * physics.VeSize;
+}
+
+sf::Vector2f Rocket::totalForce(Earth &earth)
+{
+	return physics.dir * thrustForce() + gForce(earth);
+}
+
+sf::Vector2f Rocket::gForce(Earth &earth)
+{
+	sf::Vector2f gDir = earth.worldPos() - physics.position;
+	float radius = length(gDir);
+	gDir /= radius;
+	return gDir * earth.gForce(physics.rocketMass + physics.fuelMass, radius);
+}
+
+
+sf::Vector2f Rocket::nextVelocity(float dt, Earth &earth)
+{
+	sf::Vector2f nextVel = physics.dir * physics.velocity + totalForce(earth) / (physics.fuelMass + physics.rocketMass) * dt;
+	physics.velocity = length(nextVel);
+	physics.dir = nextVel / physics.velocity;
+	return nextVel;
+}
+
+sf::Vector2f Rocket::nextPosition(float dt)
+{
+	physics.position += physics.dir * physics.velocity * dt;
+	return physics.position;
+}
+
+void Rocket::updateMass(float dt)
+{
+	physics.fuelMass -= physics.dMass * dt;
+	if (physics.fuelMass < 0)
+	{
+		physics.fuelMass = 0;
+	}
+}
+
 void Rocket::rotate(float degree)
 {
 	rocketSprite.rotate(degree);
 	fireSprite.rotate(degree);
 	Triangle[0].rotatetriangle(degree);
-	
 
+	physics.angle += degree;
 }
 
 bool Rocket::colision(sf::Vector3f circle)
@@ -86,7 +154,7 @@ bool Rocket::colision(sf::Vector3f circle)
 	return false;
 }
 
-void Rocket::update(sf::Mouse & mouse, sf::Window & window)
+void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float dt)
 {
 	if (true == collisioncheckbetweencirclesandtriangle(circle[0].getplacex() + circle[0].getradius(), circle[0].getplacey() + circle[0].getradius(), circle[0].getradius(), Triangle[0].getpoint1(), Triangle[0].getpoint2(), Triangle[0].getpoint3(), Triangle[0].getside1normal(), Triangle[0].getside2normal(), Triangle[0].getside3normal()))
 				std::cout << "woorks" << std::endl;
@@ -95,5 +163,12 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window)
 //	Triangle[0].setpoisiton((sf::Vector2f(mouse.getPosition(window).x,mouse.getPosition(window).y)));
 	Triangle[0].Triangleuppdate();
 
-
+	//Physics
+	nextPosition(dt);
+	nextVelocity(dt, earth);
+	updateMass(dt);
+	//Screen
+	setRotation(physics.angle);
+	pos = getScreenPos(physics.position);
+	setPos(pos.x, pos.y);
 }

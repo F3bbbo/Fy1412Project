@@ -1,5 +1,7 @@
 #include "Earth.h"
 
+#define G 6.674e-11
+
 Earth::Earth()
 {
 	EarthTex.loadFromFile("Textures\\game\\jorden\\jorden.png");
@@ -19,7 +21,7 @@ Earth::Earth()
 	circle[0].setorigin(sf::Vector2f(radius, radius));
 	circle[0].setpoisiton(pos);
 
-
+	mass = 5.972e24;
 }
 
 Earth::~Earth()
@@ -39,6 +41,20 @@ void Earth::draw(sf::RenderTarget & target, sf::RenderStates states) const
 void Earth::setPos(float x, float y)
 {
 
+}
+
+float Earth::gForce(float mass, float radius)
+{
+	return G * this->mass * mass / (radius * radius);
+}
+float Earth::acceleration(float radius)
+{
+	return  G * this->mass / (radius * radius);
+}
+
+sf::Vector2f Earth::worldPos()
+{
+	return getWorldPos(pos);
 }
 
 void Earth::update(sf::Mouse & mouse, sf::Window & window)

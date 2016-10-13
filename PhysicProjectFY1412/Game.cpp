@@ -3,7 +3,7 @@
 
 Game::Game()
 {
-
+	dt = 0;
 }
 
 Game::~Game()
@@ -19,7 +19,8 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 }
 void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 {
-	rocket.update(mouse, window);
+	dt = clock.restart().asSeconds();
+	rocket.update(mouse, window, earth, dt);
 	earth.update(mouse, window);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
 	{
@@ -44,7 +45,6 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 */
 	
 
-	dt = clock.restart().asSeconds();
 }
 
 void Game::rocketSpin(int degree)
