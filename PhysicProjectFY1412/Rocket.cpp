@@ -39,10 +39,10 @@ Rocket::Rocket()
 
 	//Set physics variables
 	physics.angle = 0;
-	physics.dMass = 1000;
+	physics.dMass = 200;
 	physics.fuelMass = 9000;
 	physics.rocketMass = 1000;
-	physics.VeSize = 5000;
+	physics.VeSize = 1000;
 	physics.velocity = 0;
 	physics.position = makeWorldPos(pos);
 	setDir(physics.angle);
@@ -84,6 +84,7 @@ void Rocket::setRotation(float degree)
 
 	//set physics variables
 	physics.angle = degree;
+	//setDir(physics.angle);
 }
 
 void Rocket::setDir(float degree)
@@ -107,7 +108,7 @@ sf::Vector2f Rocket::gForce(Earth &earth)
 	sf::Vector2f gDir = earth.getWorldPos() - physics.position;
 	float radius = length(gDir);
 	gDir /= radius;
-	std::cout << radius << std::endl;
+	//std::cout << earth.acceleration(radius) << std::endl;
 	return gDir * earth.acceleration(radius) * (physics.fuelMass + physics.rocketMass);
 }
 
@@ -143,6 +144,7 @@ void Rocket::rotate(float degree)
 	Triangle[0].rotatetriangle(degree);
 
 	physics.angle += degree;
+	setDir(physics.angle);
 }
 
 bool Rocket::colision(sf::Vector3f circle)
@@ -168,6 +170,7 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	nextPosition(dt);
 	nextVelocity(dt, earth);
 	updateMass(dt);
+	//std::cout <<  << std::endl;
 	//Screen
 	setRotation(physics.angle);
 	pos = makeScreenPos(physics.position);
