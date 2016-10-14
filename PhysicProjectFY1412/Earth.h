@@ -15,6 +15,7 @@ private:
 	std::vector<Circles> circle;
 	float radius;
 	float mass;
+	sf::Vector2f worldPos;
 public:
 	Earth();
 	~Earth();
@@ -22,7 +23,7 @@ public:
 	void setPos(float x, float y);
 	float gForce(float mass, float radius);
 	float acceleration(float radius);
-	sf::Vector2f worldPos();
+	sf::Vector2f getWorldPos();
 	void update(sf::Mouse &mouse, sf::Window &window);
 	sf::Vector3f circlerxy();//radien and x and y cordinates.
 };

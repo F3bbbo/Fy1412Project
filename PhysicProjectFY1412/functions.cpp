@@ -1,16 +1,17 @@
 #include "functions.h"
 
-#define SCREENTOWORLDTRANS 6371200.0f / 449.0f  
+#define SCREENTOWORLDTRANS 6371200.0f / 449.0f 
+#define WORLDTOSCREENTRANS 449.0f / 6371200.0f
 
 
-sf::Vector2f getWorldPos(sf::Vector2f & screenPos)
+sf::Vector2f makeWorldPos(sf::Vector2f & screenPos)
 {
 	return screenPos * SCREENTOWORLDTRANS;
 }
 
-sf::Vector2f getScreenPos(sf::Vector2f & worldPos)
+sf::Vector2f makeScreenPos(sf::Vector2f & worldPos)
 {
-	return worldPos * 1.0f / SCREENTOWORLDTRANS;
+	return worldPos * WORLDTOSCREENTRANS;
 }
 
 float length(sf::Vector2f & vec)

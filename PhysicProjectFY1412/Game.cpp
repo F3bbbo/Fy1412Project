@@ -20,7 +20,11 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 {
 	dt = clock.restart().asSeconds();
-	rocket.update(mouse, window, earth, dt);
+	if (dt > 0.2f)
+	{
+		dt = 0.000001f;
+	}
+	rocket.update(mouse, window, earth, 5 * dt);
 	earth.update(mouse, window);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::BackSpace))
 	{

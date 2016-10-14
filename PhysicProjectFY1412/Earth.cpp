@@ -21,7 +21,10 @@ Earth::Earth()
 	circle[0].setorigin(sf::Vector2f(radius, radius));
 	circle[0].setpoisiton(pos);
 
+	std::cout << EarthSprite.getGlobalBounds().width << std::endl;
+
 	mass = 5.972e24;
+	worldPos = makeWorldPos(pos);
 }
 
 Earth::~Earth()
@@ -52,9 +55,9 @@ float Earth::acceleration(float radius)
 	return  G * this->mass / (radius * radius);
 }
 
-sf::Vector2f Earth::worldPos()
+sf::Vector2f Earth::getWorldPos()
 {
-	return getWorldPos(pos);
+	return worldPos;
 }
 
 void Earth::update(sf::Mouse & mouse, sf::Window & window)

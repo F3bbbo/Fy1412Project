@@ -40,13 +40,12 @@ Rocket::Rocket()
 	//Set physics variables
 	physics.angle = 0;
 	physics.dMass = 1000;
-	physics.fuelMass = 5000;
+	physics.fuelMass = 9000;
 	physics.rocketMass = 1000;
-	physics.VeSize = 1000;
+	physics.VeSize = 5000;
 	physics.velocity = 0;
-	physics.position = getWorldPos(pos);
+	physics.position = makeWorldPos(pos);
 	setDir(physics.angle);
-	std::cout << physics.position.x << " " << physics.position.y << std::endl;
 }
 
 Rocket::~Rocket()
@@ -105,10 +104,11 @@ sf::Vector2f Rocket::totalForce(Earth &earth)
 
 sf::Vector2f Rocket::gForce(Earth &earth)
 {
-	sf::Vector2f gDir = earth.worldPos() - physics.position;
+	sf::Vector2f gDir = earth.getWorldPos() - physics.position;
 	float radius = length(gDir);
 	gDir /= radius;
-	return gDir * earth.gForce(physics.rocketMass + physics.fuelMass, radius);
+	std::cout << radius << std::endl;
+	return gDir * earth.acceleration(radius) * (physics.fuelMass + physics.rocketMass);
 }
 
 
@@ -132,6 +132,7 @@ void Rocket::updateMass(float dt)
 	if (physics.fuelMass < 0)
 	{
 		physics.fuelMass = 0;
+		physics.dMass = 0;
 	}
 }
 
@@ -169,6 +170,6 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	updateMass(dt);
 	//Screen
 	setRotation(physics.angle);
-	pos = getScreenPos(physics.position);
+	pos = makeScreenPos(physics.position);
 	setPos(pos.x, pos.y);
 }

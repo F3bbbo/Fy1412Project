@@ -3,9 +3,9 @@
 
 #include <SFML\Graphics.hpp>
 
-sf::Vector2f getWorldPos(sf::Vector2f &screenPos);
+sf::Vector2f makeWorldPos(sf::Vector2f &screenPos);
 
-sf::Vector2f getScreenPos(sf::Vector2f &worldPos);
+sf::Vector2f makeScreenPos(sf::Vector2f &worldPos);
 
 float length(sf::Vector2f &vec);
 
