@@ -61,6 +61,11 @@ void Triangles::Triangleuppdate()
 	this->trianglepoint3 = sf::Vector2f(kordinatochbred[0] + kordinatochbred[2],kordinatochbred[1]+kordinatochbred[3]);
 }
 
+void Triangles::setrotate(float degree)
+{
+	triangle.setRotation(degree);
+}
+
 
 
 sf::Vector2f Triangles::getpoint1()

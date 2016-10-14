@@ -9,6 +9,7 @@
 class Earth : public sf::Drawable
 {
 private:
+	float scale;
 	sf::Sprite EarthSprite;
 	sf::Texture EarthTex;
 	sf::Vector2f pos;
