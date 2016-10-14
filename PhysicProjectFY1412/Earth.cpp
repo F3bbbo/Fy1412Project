@@ -6,7 +6,7 @@ Earth::Earth()
 {
 	EarthTex.loadFromFile("Textures\\game\\jorden\\jorden.png");
 	EarthSprite.setTexture(EarthTex);
-	float scale = 0.5;
+	scale = 0.5;
 	EarthSprite.scale(scale, scale);
 	radius = EarthSprite.getLocalBounds().width/2;
 	EarthSprite.setOrigin(radius, radius);
@@ -69,5 +69,5 @@ sf::Vector3f Earth::circlerxy()
 {
 	
 
-	return sf::Vector3f(920, 540, radius*0.417);
+	return sf::Vector3f(/*920, 540*/pos.x, pos.y, radius*scale/*0.417*/);
 }

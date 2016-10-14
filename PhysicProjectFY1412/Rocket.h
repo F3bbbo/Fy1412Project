@@ -6,6 +6,7 @@
 #include "Collision.h"
 #include "circle.h"
 #include "Earth.h"
+#include "Square.h"
 class Rocket : public sf::Drawable
 {
 	struct Physics
@@ -28,6 +29,7 @@ private:
 	bool exhausting;
 	std::vector<Circles> circle;
 	std::vector<Triangles>Triangle;
+	std::vector<Square>Squares;
 	void setRotation(float degree);
 	Physics physics;
 	//Physics functions

@@ -17,6 +17,7 @@ public:
 	Triangles(float);
 	~Triangles();
 	void Triangleuppdate();
+	void setrotate(float);
 	//	void color(sf::Color::Red);
 	sf::Vector2f getpoint1();
 	sf::Vector2f getpoint2();

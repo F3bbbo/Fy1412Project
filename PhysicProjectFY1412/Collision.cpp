@@ -15,13 +15,14 @@ bool collisioncheckbetweencircles(float x1, float y1, float radius1, float x2, f
 }
 float lengthfunction(sf::Vector2f vector)
 {
-	
-return sqrt(vector.x*vector.x + vector.y*vector.y);
+
+	return sqrt(vector.x*vector.x + vector.y*vector.y);
 
 
 }
 bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, sf::Vector2f trianglepoint1, sf::Vector2f trianglepoint2, sf::Vector2f trianglepoint3, sf::Vector2f side1normal, sf::Vector2f side2normal, sf::Vector2f side3normal)
 {
+
 	x1 = x1;
 	y1 = y1;
 	//test one points inside circle
@@ -33,7 +34,7 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	c1 = trianglepoint1 - circle;
 	c2 = trianglepoint2 - circle;
 	c3 = trianglepoint3 - circle;
-	
+
 	if (sqrt(c1.x*c1.x + c1.y*c1.y) <= (radius1))
 	{
 		return true;
@@ -54,12 +55,12 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	point2/_______\point3
 	side3
 
-
-
-
-
 	*/
-	
+
+
+
+
+
 	//test två edges collision;
 	sf::Vector2f OL;
 	c1 = trianglepoint1 - trianglepoint2; //side 1
@@ -72,18 +73,19 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	length = OT.x*c1.x + OT.y*c1.y; // a projection from a to b    /
 	OL.x = c1.x * length; // creates the vector	OL			      /
 	OL.y = c1.y * length;									   //*trianglepoint2
-//	length = lengthfunction(OL);							   /*	if ((circle.x+OL.x <= radius1) || (circle.y+OL.y <=radius1))
-	/*														   {
+															   //	length = lengthfunction(OL);							   /*	if ((circle.x+OL.x <= radius1) || (circle.y+OL.y <=radius1))
+															   /*		   {
 															   return true;
 															   }
 															   */
-//	std::cout << length << std::endl;
-	//|| length>lengthfunction(trianglepoint2 - trianglepoint1) - radius1   (length>(lengthfunction(trianglepoint1 - trianglepoint2) + radius1)))
-	if ((length<-radius1) || (length>(lengthfunction(trianglepoint2 - trianglepoint1) + radius1)))
+
+															   //	std::cout << length << std::endl;
+															   //|| length>lengthfunction(trianglepoint2 - trianglepoint1) - radius1   (length>(lengthfunction(trianglepoint1 - trianglepoint2) + radius1)))
+	if ((length<0) || (length>(lengthfunction(trianglepoint2 - trianglepoint1))))
 	{
 
 	}
-   else
+	else
 	{
 
 		OV = OT - OL;
@@ -92,8 +94,8 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 			return true;
 		}
 
-  }
-	
+	}
+
 	c2 = trianglepoint1 - trianglepoint3; //side 2
 	OT = trianglepoint1 - circle;
 	normaliser = sqrt(c2.x*c2.x + c2.y*c2.y);
@@ -102,7 +104,7 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	OL.x = c2.x *length;
 	OL.y = c2.y * length;
 
-	if ((length<-radius1) || (length>(lengthfunction(trianglepoint3 - trianglepoint1) + radius1)))
+	if ((length<0.f) || (length>(lengthfunction(trianglepoint3 - trianglepoint1))))
 	{
 
 	}
@@ -125,7 +127,7 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	OL.x = c3.x*length;
 	OL.y = c3.y * length;
 
-	if ((length<-radius1) || (length>(lengthfunction(trianglepoint3 - trianglepoint2) + radius1)))
+	if ((length<0.f) || (length>(lengthfunction(trianglepoint3 - trianglepoint2))))
 	{
 
 	}
@@ -143,7 +145,7 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	//test tre circle in triangle 
 	//tar normalerna för cirkeln och projecerar den på normalen för trianglen
 	//
-/*
+	/*
 
 	//side normal1
 	c1 = trianglepoint1 - circle;  //creates stage1
@@ -159,35 +161,142 @@ bool collisioncheckbetweencirclesandtriangle(float x1, float y1, float radius1, 
 	//check if test is negativ or positiv.
 	if (projectiontest > 0)
 	{
-		//side normal1
-		c1 = trianglepoint1 - circle;
-		c2 = trianglepoint1 - trianglepoint3;
-		normalize = sqrt(c2.x*c2.x + c2.y * c2.y);
-		c2 = c2 / normalize;
-		length = (c2.x * c1.x + c2.y * c1.y);
-		c2.x = length * c2.x;
-		c2.y = length *c2.y;
-		c3 = -c2 + c1;
-		projectiontest = c3.x *side2normal.x + c3.y * side2normal.y;
-		if (projectiontest > 0)
-		{
-			c1 = trianglepoint2 - circle;
-			c2 = trianglepoint2 - trianglepoint3;
-			normalize = sqrt(c2.x*c2.x + c2.y * c2.y);
-			c2 = c2 / normalize;
-			length = (c2.x * c1.x + c2.y * c1.y);
-			c2.x = length * c2.x;
-			c2.y = length *c2.y;
-			c3 = -c2 + c1;
-			projectiontest = c3.x *side3normal.x + c3.y * side3normal.y;
-			if (projectiontest > 0)
-				return true;
-		}
+	//side normal1
+	c1 = trianglepoint1 - circle;
+	c2 = trianglepoint1 - trianglepoint3;
+	normalize = sqrt(c2.x*c2.x + c2.y * c2.y);
+	c2 = c2 / normalize;
+	length = (c2.x * c1.x + c2.y * c1.y);
+	c2.x = length * c2.x;
+	c2.y = length *c2.y;
+	c3 = -c2 + c1;
+	projectiontest = c3.x *side2normal.x + c3.y * side2normal.y;
+	if (projectiontest > 0)
+	{
+	c1 = trianglepoint2 - circle;
+	c2 = trianglepoint2 - trianglepoint3;
+	normalize = sqrt(c2.x*c2.x + c2.y * c2.y);
+	c2 = c2 / normalize;
+	length = (c2.x * c1.x + c2.y * c1.y);
+	c2.x = length * c2.x;
+	c2.y = length *c2.y;
+	c3 = -c2 + c1;
+	projectiontest = c3.x *side3normal.x + c3.y * side3normal.y;
+	if (projectiontest > 0)
+	return true;
+	}
 	}
 
 	*/
 	return false;
 }
+sf::Vector2f normaliser(sf::Vector2f position1)
+{
+	return	position1 / sqrt(position1.x*position1.x + position1.y*position1.y);
+}
+bool lineandcirclecollision(float x1, float y1, float radius1, sf::Vector2f point1, sf::Vector2f point2)
+{
+	/*
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
+	{
+	std::cout << "endl break" << std::endl;
+	}*/
 
+	sf::Vector2f circle; // circle center
+	circle.x = x1;
+	circle.y = y1;
+	//test två edges collision;
+	sf::Vector2f OL;
+	sf::Vector2f c1 = point1 - point2; //side 1
+	sf::Vector2f OT; //line between circle center and start of ray.  
+	sf::Vector2f OV; //line from circle to OL                        _--* trianglepoint1
+	OT = point1 - circle;                                 //    OT_--  /   /
+	float normaliser = sqrt(c1.x*c1.x + c1.y *c1.y);//       	_-	  /   OL
+	c1 = c1 / normaliser; // normalising the vector			  _-	 /   /
+	float length; //                         		  circle o--OV->/   *
+	length = OT.x*c1.x + OT.y*c1.y; // a projection from a to b    /
+	OL.x = c1.x * length; // creates the vector	OL			      /
+	OL.y = c1.y * length;									   //*trianglepoint2
+															   //	length = lengthfunction(OL);							   /*	if ((circle.x+OL.x <= radius1) || (circle.y+OL.y <=radius1))
+															   /*														   {
+															   return true;
+															   }
+															   */
+															   //	std::cout << length << std::endl;
+															   //|| length>lengthfunction(trianglepoint2 - trianglepoint1) - radius1   (length>(lengthfunction(trianglepoint1 - trianglepoint2) + radius1)))
+	if ((length<0.f))
+	{
+		//	sf::Vector2f vector1test = (circle - point1);
+		//		=vector1test.x*vector1test.x + vector1test.y*vector1test.y;
+
+	}
+	else if (length>(lengthfunction(point2 - point1)))
+	{
+
+	}
+	else
+	{
+
+		OV = OT - OL;
+		if (sqrt(OV.x*OV.x + OV.y*OV.y) <= radius1)
+		{
+			return true;
+		}
+
+	}
+	return false;
+
+	/*
+	sf::Vector2f circle;
+	circle.x = x1;
+	circle.y = y1;
+	sf::Vector2f OL=circle - point1;
+	sf::Vector2f OT = point1 - point2;
+	*/
+
+}
+
+
+
+bool collisioncheckbetweencircleandsquare(float x1, float y1, float radius1, sf::Vector2f point1, sf::Vector2f point2, sf::Vector2f point3, sf::Vector2f point4)
+{
+	//test one points inside circle
+	sf::Vector2f circle; // circle center
+	circle.x = x1;
+	circle.y = y1;
+	sf::Vector2f c1, c2, c3, c4; // a vertex from the circles mid to each triangles position is created. 
+
+	c1 = point1 - circle;
+	c2 = point2 - circle;
+	c3 = point3 - circle;
+	c4 = point4 - circle;
+
+	if (sqrt(c1.x*c1.x + c1.y*c1.y) <= (radius1))
+	{
+		return true;
+	}
+	if (sqrt(c2.x*c2.x + c2.y*c2.y) <= (radius1))
+	{
+		return true;
+	}
+	if (sqrt(c3.x*c3.x + c3.y*c3.y) <= (radius1))
+	{
+		return true;
+	}
+	if (sqrt(c4.x*c4.x + c4.y*c4.y) <= (radius1))
+		return true;
+
+	if (true == lineandcirclecollision(x1, y1, radius1, point2, point1))
+		return true;
+	if (true == lineandcirclecollision(x1, y1, radius1, point3, point2))
+		return true;
+	if (true == lineandcirclecollision(x1, y1, radius1, point4, point3))
+		return true;
+	if (true == lineandcirclecollision(x1, y1, radius1, point1, point4))
+		return true;
+
+
+	return false;
+}
 
 

@@ -152,12 +152,14 @@
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Earth.cpp" />
+    <ClCompile Include="Explosions.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="RotationButton.cpp" />
+    <ClCompile Include="Square.cpp" />
     <ClCompile Include="StartButton.cpp" />
     <ClCompile Include="Triangle.cpp" />
   </ItemGroup>
@@ -166,11 +168,13 @@
     <ClInclude Include="circle.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Earth.h" />
+    <ClInclude Include="Explosions.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="RotationButton.h" />
+    <ClInclude Include="Square.h" />
     <ClInclude Include="StartButton.h" />
     <ClInclude Include="Triangle.h" />
   </ItemGroup>
