@@ -13,13 +13,14 @@ Game::~Game()
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	target.draw(rocket);
 	target.draw(earth);
+	target.draw(rocket);
 
 }
 void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 {
 	dt = clock.restart().asSeconds();
+	
 	if (dt > 0.2f)
 	{
 		dt = 0.000001f;

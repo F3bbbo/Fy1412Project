@@ -9,7 +9,7 @@ class Circles : public sf::Drawable
 private:
 	sf::CircleShape circle;
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-	int radius;
+	float radius;
 	int placex;
 	int placey;
 
@@ -23,12 +23,13 @@ public:
 	void setorigin(sf::Vector2f);
 	void scale(sf::Vector2f);
 	void SetFillColor(sf::Color color);
-	int getradius();
+	float getradius();
 	int getplacex();
 	int getplacey();
 	void setplacex(int placex);
 	void setplacey(int placey);
-	void setradius(int radius);
+	void setradius(float radius);
+	void settexture(sf::Texture *texturee);
 };
 
 

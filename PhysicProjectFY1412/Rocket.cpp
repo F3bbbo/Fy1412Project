@@ -35,6 +35,7 @@ Rocket::Rocket()
 	Triangle[0].setpoisiton(sf::Vector2f(pos.x,pos.y));
 	Triangle[0].scale(sf::Vector2f(scale, scale));
 	Triangle[0].Triangleuppdate();
+	origin = sf::Vector2f(halfRocketWidth, halfRocketHeight);
 	Circles circle1 = Circles(10, 0, 0);
 	circle.push_back(circle1);
 	Squares = std::vector<Square>(0);
@@ -82,6 +83,7 @@ void Rocket::draw(sf::RenderTarget & target, sf::RenderStates states) const
 		target.draw(Squares[0]);
 		target.draw(Squares[1]);
 	}
+	target.draw(explosions);
 }
 
 void Rocket::setPos(float x, float y)
@@ -92,6 +94,12 @@ void Rocket::setPos(float x, float y)
 	for (int i = 0;i < 2;i++)
 	{
 		Squares[i].setpoisiton(sf::Vector2f(x, y));
+	}
+	otherdt = otherdt + clock.getElapsedTime().asSeconds();
+	if(otherdt>1)
+	{
+		otherdt = clock.restart().asSeconds();
+	//	explosions.update(origin, sf::Vector2f(x, y)); EXPLOSION
 	}
 }
 
@@ -186,17 +194,18 @@ bool Rocket::colision(sf::Vector3f circle)
 
 void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float dt)
 {
+	
 	if (true == collisioncheckbetweencirclesandtriangle(circle[0].getplacex() + circle[0].getradius(), circle[0].getplacey() + circle[0].getradius(), circle[0].getradius(), Triangle[0].getpoint1(), Triangle[0].getpoint2(), Triangle[0].getpoint3(), Triangle[0].getside1normal(), Triangle[0].getside2normal(), Triangle[0].getside3normal()))
 				std::cout << "woorks" << std::endl;
 //	circle[0].setplacex(mouse.getPosition(window).x);
 //	circle[0].setplacey(mouse.getPosition(window).y);
 //	Triangle[0].setpoisiton((sf::Vector2f(mouse.getPosition(window).x,mouse.getPosition(window).y)));
 	//Physics
-/*	nextPosition(dt);
+	nextPosition(dt);
 	nextVelocity(dt, earth);
 	updateMass(dt);
 	//std::cout <<  << std::endl;
-*/	//Screen
+	//Screen
 	setRotation(physics.angle);
 	pos = makeScreenPos(physics.position);
 	setPos(pos.x, pos.y);

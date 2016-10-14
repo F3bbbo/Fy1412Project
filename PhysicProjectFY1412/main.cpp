@@ -12,7 +12,7 @@ int main()
 	sf::Mouse mouse;
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "Physics Project Fy1412");
 	//test
-
+	
 
 	while (window.isOpen())
 	{

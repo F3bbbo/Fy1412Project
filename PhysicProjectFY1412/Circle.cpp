@@ -37,7 +37,7 @@ void Circles::SetFillColor(sf::Color farg)
 	circle.setFillColor(farg);
 }
 
-int Circles::getradius()
+float Circles::getradius()
 {
 
 	return radius;
@@ -65,10 +65,15 @@ void Circles::setplacey(int placey)
 	circle.setPosition(sf::Vector2f(placex, placey));
 }
 
-void Circles::setradius(int radius)
+void Circles::setradius(float radius)
 {
 	this->radius = radius;
 	circle.setRadius(radius);
+}
+
+void Circles::settexture(sf::Texture *texturee)
+{
+	circle.setTexture(texturee);
 }
 
 

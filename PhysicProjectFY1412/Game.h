@@ -17,6 +17,7 @@ private:
 	float dt;
 	Rocket rocket;
 	Earth earth;
+	float unalterddt;
 
 public:
 	Game();

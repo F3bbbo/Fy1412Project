@@ -4,14 +4,16 @@
 #include <iostream>
 #include "circle.h"
 #include <SFML/Graphics.hpp>
-
+#include "functions.h"
 class explosion : public sf::Drawable
 {
 private:
-	Circles circle;
+	Circles *circle;
 	float P, a, B, Y, G, z; //P = overpressure, a,b,y,g variables for formle, and z is so you can create a b y g. 
 	float d, m; //d= how long to check the over pressure, m = the mass of the explosives.
+	float Pmax, procentpart;
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
+	sf::Texture ExplosionsTex[6];
 public:
 	explosion();
 	~explosion();
@@ -23,8 +25,8 @@ public:
 	void Gcalculation();
 	void setd(float d);
 	void setm(float m);
-	void update();
-	void gr
+	void update(sf::Vector2f, sf::Vector2f);
+	void circleradiusexpansion();
 
 };
 

@@ -7,6 +7,7 @@
 #include "circle.h"
 #include "Earth.h"
 #include "Square.h"
+#include "Explosions.h"
 class Rocket : public sf::Drawable
 {
 	struct Physics
@@ -26,6 +27,8 @@ private:
 	sf::Sprite fireSprite;
 	sf::Texture fireTex;
 	sf::Vector2f pos;
+	sf::Vector2f origin;
+	sf::Clock clock;
 	bool exhausting;
 	std::vector<Circles> circle;
 	std::vector<Triangles>Triangle;
@@ -41,7 +44,8 @@ private:
 	sf::Vector2f nextVelocity(float dt, Earth &earth);
 	sf::Vector2f nextPosition(float dt);
 	void updateMass(float dt);
-
+	explosion explosions;
+	float otherdt=0;
 public:
 	Rocket();
 	~Rocket();
