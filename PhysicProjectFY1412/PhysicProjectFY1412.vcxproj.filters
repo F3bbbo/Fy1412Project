@@ -57,6 +57,9 @@
     <ClCompile Include="Explosions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ResetButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h">
@@ -96,6 +99,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Explosions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ResetButton.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

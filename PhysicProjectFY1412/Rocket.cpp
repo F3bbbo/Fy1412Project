@@ -27,7 +27,6 @@ Rocket::Rocket()
 	pos = sf::Vector2f(930, 292);
 	rocketSprite.setPosition(pos);
 	fireSprite.setPosition(pos);
-	exhausting = true;
 	// sets the bounding boxes for the rocket
 	circle = std::vector<Circles>(0);
 	Triangle = std::vector<Triangles>(0);
@@ -54,16 +53,7 @@ Rocket::Rocket()
 	Squares[1].scale(sf::Vector2f(scale, scale));
 
 	//Set physics variables
-	physics.angle = 0;
-	physics.dMass = 200;
-	physics.fuelMass = 9000;
-	physics.rocketMass = 1000;
-	physics.VeSize = 3000;
-	physics.velocity = 0;
-	physics.position = makeWorldPos(pos);
-	physics.velDir = sf::Vector2f(0, 0);
-	physics.thrust = 0.0f;
-	setDir(physics.angle);
+	reset();
 }
 
 Rocket::~Rocket()
@@ -74,7 +64,7 @@ Rocket::~Rocket()
 void Rocket::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 
-	if (exhausting)
+	if (physics.thrust && physics.fuelMass > 0.0f)
 	{
 		target.draw(fireSprite);
 	}
@@ -172,6 +162,7 @@ sf::Vector2f Rocket::nextVelocity(float dt, Earth &earth)
 		physics.angle = acos(-physics.velDir.y) * 180 / PI;
 	else
 		physics.angle = 360 - acos(-physics.velDir.y) * 180 / PI;
+
 	return nextVel;
 }
 
@@ -198,6 +189,25 @@ void Rocket::rotate(float degree)
 	Triangle[0].rotatetriangle(degree);
 	physics.angle += degree;
 	setDir(physics.angle);
+}
+
+void Rocket::reset()
+{
+	pos = sf::Vector2f(930, 292);
+	rocketSprite.setPosition(pos);
+	fireSprite.setPosition(pos);
+	pos = sf::Vector2f(930, 292);
+	physics.angle = 0;
+	physics.dMass = 100;
+	physics.fuelMass = 9000;
+	physics.rocketMass = 1000;
+	physics.VeSize = 3000;
+	physics.velocity = 200;
+	physics.position = makeWorldPos(pos);
+	physics.velDir = sf::Vector2f(0, -1);
+	physics.thrust = 0.0f;
+	setDir(physics.angle);
+	setRotation();
 }
 
 bool Rocket::colision(sf::Vector3f circle)

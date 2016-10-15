@@ -1,13 +1,13 @@
 #include "GUI.h"
 #include "StartButton.h"
 #include "RotationButton.h"
-
+#include "ResetButton.h"
 
 
 GUI::GUI()
 {
-	nrOfButtons = 3;
-	buttons = new Button*[3];
+	nrOfButtons = 4;
+	buttons = new Button*[nrOfButtons];
 	//StartButton
 	buttons[0] = new StartButton("Textures\\gui\\StartButton.png");
 	buttons[0]->setSize(100, 20);
@@ -21,6 +21,9 @@ GUI::GUI()
 	buttons[2] = new RotationButton("Textures\\gui\\RotationButton.png", -5);
 	buttons[2]->setSize(40, 40);
 	buttons[2]->setPosition(650, 400);
+	//ResetButton
+	buttons[3] = new ResetButton();
+	buttons[3]->setPosition(100, 200);
 
 
 }

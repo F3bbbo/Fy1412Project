@@ -27,6 +27,7 @@ public:
 	void rocketSpin(float scale);
 	void rocketSpin(int degree);
 	void rocketThrust(float thrust);
+	void reset();
 };
 
 

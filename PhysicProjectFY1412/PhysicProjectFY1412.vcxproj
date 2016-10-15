@@ -157,6 +157,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ResetButton.cpp" />
     <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="RotationButton.cpp" />
     <ClCompile Include="Square.cpp" />
@@ -172,6 +173,7 @@
     <ClInclude Include="functions.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
+    <ClInclude Include="ResetButton.h" />
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="RotationButton.h" />
     <ClInclude Include="Square.h" />

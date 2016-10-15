@@ -31,7 +31,6 @@ private:
 	sf::Vector2f pos;
 	sf::Vector2f origin;
 	sf::Clock clock;
-	bool exhausting;
 	std::vector<Circles> circle;
 	std::vector<Triangles>Triangle;
 	std::vector<Square>Squares;
@@ -56,7 +55,7 @@ public:
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	void setPos(float x, float y);
 	void rotate(float degree);
-	
+	void reset();
 	bool colision(sf::Vector3f circle);
 	void update(sf::Mouse &mouse, sf::Window &window, Earth &earth, float dt);
 };

@@ -68,6 +68,12 @@ void Game::rocketThrust(float thrust)
 	rocket.setThrust(thrust);
 }
 
+void Game::reset()
+{
+	running = false;
+	rocket.reset();
+}
+
 void Game::rocketSpin(float scale)
 {
 	rocket.rotate(scale * dt);
