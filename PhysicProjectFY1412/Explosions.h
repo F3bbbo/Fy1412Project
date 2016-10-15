@@ -25,8 +25,8 @@ public:
 	void Gcalculation();
 	void setd(float d);
 	void setm(float m);
-	void update(sf::Vector2f, sf::Vector2f);
-	void circleradiusexpansion();
+	void update(sf::Vector2f, sf::Vector2f,float);
+	void circleradiusexpansion(float dt);
 
 };
 

@@ -69,16 +69,16 @@ void explosion::setm(float m)
 }
 
 
-void explosion::circleradiusexpansion()
+void explosion::circleradiusexpansion(float dt)
 {
-	if (P <= 2000)
+	if (P <= 10000)
 	{
 
 	}
 	else
-	circle->setradius(circle->getradius() + 8000 * WORLDTOSCREENTRANS);
+	circle->setradius(circle->getradius() + 8000 * WORLDTOSCREENTRANS*dt);
 }
-void explosion::update(sf::Vector2f origin, sf::Vector2f position)
+void explosion::update(sf::Vector2f origin, sf::Vector2f position,float dt)
 {
 	circle->setorigin(sf::Vector2f(circle->getradius(), circle->getradius()));
 	circle->setpoisiton(position);
@@ -102,7 +102,7 @@ void explosion::update(sf::Vector2f origin, sf::Vector2f position)
 
 
 
-	circleradiusexpansion();
+	circleradiusexpansion(dt);
 
 
 }

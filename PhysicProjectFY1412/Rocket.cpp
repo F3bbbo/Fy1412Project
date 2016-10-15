@@ -90,12 +90,11 @@ void Rocket::setPos(float x, float y)
 	{
 		Squares[i].setpoisiton(sf::Vector2f(x, y));
 	}
-	otherdt = otherdt + clock.getElapsedTime().asSeconds();
-	if(otherdt>1)
-	{
-		otherdt = clock.restart().asSeconds();
-	//	explosions.update(origin, sf::Vector2f(x, y)); EXPLOSION
-	}
+	
+	
+	
+	
+	
 }
 
 void Rocket::setRotation(float degree)
@@ -225,20 +224,23 @@ bool Rocket::colision(sf::Vector3f circle)
 
 void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float dt)
 {
-	
+	float rocketdt;
+	rocketdt = dt * 100;
 	if (true == collisioncheckbetweencirclesandtriangle(circle[0].getplacex() + circle[0].getradius(), circle[0].getplacey() + circle[0].getradius(), circle[0].getradius(), Triangle[0].getpoint1(), Triangle[0].getpoint2(), Triangle[0].getpoint3(), Triangle[0].getside1normal(), Triangle[0].getside2normal(), Triangle[0].getside3normal()))
 				std::cout << "woorks" << std::endl;
 //	circle[0].setplacex(mouse.getPosition(window).x);
 //	circle[0].setplacey(mouse.getPosition(window).y);
 //	Triangle[0].setpoisiton((sf::Vector2f(mouse.getPosition(window).x,mouse.getPosition(window).y)));
 	//Physics
-	nextPosition(dt);
-	nextVelocity(dt, earth);
-	updateMass(dt);
+	
+	nextPosition(rocketdt);
+	nextVelocity(rocketdt, earth);
+	updateMass(rocketdt);
 	//Screen
 	setRotation();
 	pos = makeScreenPos(physics.position);
 	setPos(pos.x, pos.y);
+	explosions.update(origin, sf::Vector2f(/*pos.x, pos.y*/ 500,500), rocketdt/10);// EXPLOSION
 	Triangle[0].Triangleuppdate();
 	Squares[0].SquareUpdate();
 	Squares[1].SquareUpdate();
