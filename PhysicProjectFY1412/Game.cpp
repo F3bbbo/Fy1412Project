@@ -26,7 +26,7 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 	{
 		dt = 0.01f;
 	}
-	running = true;
+
 	if (running)
 	{
 		rocket.update(mouse, window, earth, dt);

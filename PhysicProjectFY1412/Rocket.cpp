@@ -207,6 +207,7 @@ void Rocket::reset()
 	physics.thrust = 0.0f;
 	setDir(physics.angle);
 	setRotation();
+	explosions.resetfunction();
 }
 
 bool Rocket::colision(sf::Vector3f circle)

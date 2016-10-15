@@ -27,7 +27,7 @@ public:
 	void setm(float m);
 	void update(sf::Vector2f, sf::Vector2f,float);
 	void circleradiusexpansion(float dt);
-
+	void resetfunction();
 };
 
 

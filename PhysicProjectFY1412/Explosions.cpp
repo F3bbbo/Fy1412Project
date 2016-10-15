@@ -78,6 +78,10 @@ void explosion::circleradiusexpansion(float dt)
 	else
 	circle->setradius(circle->getradius() + 8000 * WORLDTOSCREENTRANS*dt);
 }
+void explosion::resetfunction()
+{
+	circle->setradius(0);
+}
 void explosion::update(sf::Vector2f origin, sf::Vector2f position,float dt)
 {
 	circle->setorigin(sf::Vector2f(circle->getradius(), circle->getradius()));
