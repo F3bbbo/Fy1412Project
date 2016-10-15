@@ -22,6 +22,7 @@ GUI::GUI()
 	buttons[2]->setSize(40, 40);
 	buttons[2]->setPosition(650, 400);
 
+
 }
 
 GUI::~GUI()

@@ -1,5 +1,8 @@
 #include "Rocket.h"
 
+#define PI 3.14159265
+
+
 Rocket::Rocket()
 {
 	//Load textures
@@ -55,9 +58,11 @@ Rocket::Rocket()
 	physics.dMass = 200;
 	physics.fuelMass = 9000;
 	physics.rocketMass = 1000;
-	physics.VeSize = 1000;
+	physics.VeSize = 3000;
 	physics.velocity = 0;
 	physics.position = makeWorldPos(pos);
+	physics.velDir = sf::Vector2f(0, 0);
+	physics.thrust = 0.0f;
 	setDir(physics.angle);
 }
 
@@ -115,24 +120,37 @@ void Rocket::setRotation(float degree)
 
 
 	//set physics variables
-	physics.angle = degree;
+	//physics.angle = degree;
 	//setDir(physics.angle);
+}
+
+void Rocket::setRotation()
+{
+	setRotation(physics.angle);
+}
+
+void Rocket::setThrust(float thrust)
+{
+	physics.thrust = thrust;
 }
 
 void Rocket::setDir(float degree)
 {
-	physics.dir.x = sin(degree);
-	physics.dir.y = -cos(degree);
+	degree = degree * PI / 180;
+	physics.thrustDir.x = sin(degree);
+	physics.thrustDir.y = -cos(degree);
+
 }
 
 float Rocket::thrustForce()
 {
-	return physics.dMass * physics.VeSize;
+	return physics.thrust * physics.dMass * physics.VeSize;
 }
 
 sf::Vector2f Rocket::totalForce(Earth &earth)
 {
-	return physics.dir * thrustForce() + gForce(earth);
+	sf::Vector2f returnForce = physics.thrustDir * thrustForce() + gForce(earth);
+	return returnForce;
 }
 
 sf::Vector2f Rocket::gForce(Earth &earth)
@@ -147,21 +165,25 @@ sf::Vector2f Rocket::gForce(Earth &earth)
 
 sf::Vector2f Rocket::nextVelocity(float dt, Earth &earth)
 {
-	sf::Vector2f nextVel = physics.dir * physics.velocity + totalForce(earth) / (physics.fuelMass + physics.rocketMass) * dt;
+	sf::Vector2f nextVel = physics.velDir * physics.velocity + totalForce(earth) / (physics.fuelMass + physics.rocketMass) * dt;
 	physics.velocity = length(nextVel);
-	physics.dir = nextVel / physics.velocity;
+	physics.velDir = nextVel / physics.velocity;
+	if(physics.velDir.x > 0)
+		physics.angle = acos(-physics.velDir.y) * 180 / PI;
+	else
+		physics.angle = 360 - acos(-physics.velDir.y) * 180 / PI;
 	return nextVel;
 }
 
 sf::Vector2f Rocket::nextPosition(float dt)
 {
-	physics.position += physics.dir * physics.velocity * dt;
+	physics.position += physics.velDir * physics.velocity * dt;
 	return physics.position;
 }
 
 void Rocket::updateMass(float dt)
 {
-	physics.fuelMass -= physics.dMass * dt;
+	physics.fuelMass -= physics.thrust * physics.dMass * dt;
 	if (physics.fuelMass < 0)
 	{
 		physics.fuelMass = 0;
@@ -174,7 +196,6 @@ void Rocket::rotate(float degree)
 	rocketSprite.rotate(degree);
 	fireSprite.rotate(degree);
 	Triangle[0].rotatetriangle(degree);
-
 	physics.angle += degree;
 	setDir(physics.angle);
 }
@@ -204,13 +225,13 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	nextPosition(dt);
 	nextVelocity(dt, earth);
 	updateMass(dt);
-	//std::cout <<  << std::endl;
 	//Screen
-	setRotation(physics.angle);
+	setRotation();
 	pos = makeScreenPos(physics.position);
 	setPos(pos.x, pos.y);
 	Triangle[0].Triangleuppdate();
 	Squares[0].SquareUpdate();
 	Squares[1].SquareUpdate();
-
+	//std::cout << physics.velDir.x << " " << physics.velDir.y << std::endl;
+	//std::cout << physics.angle << std::endl;
 }

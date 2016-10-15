@@ -20,5 +20,10 @@ StartButton::~StartButton()
 
 void StartButton::onClick(Game &game) const
 {
-	std::cout << "Start Button Pressed! " << std::endl;
+	game.rocketThrust(0.0f);
+}
+
+void StartButton::onPress(Game &game) const
+{
+	game.rocketThrust(1.0f);
 }

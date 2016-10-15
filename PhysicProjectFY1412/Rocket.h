@@ -14,12 +14,14 @@ class Rocket : public sf::Drawable
 	{
 		float VeSize;
 		float velocity;
-		sf::Vector2f dir;
+		sf::Vector2f velDir;
+		sf::Vector2f thrustDir;
 		sf::Vector2f position;
 		float dMass;
 		float fuelMass;
 		float rocketMass;
 		float angle;
+		float thrust;
 	};
 private:
 	sf::Sprite rocketSprite;
@@ -34,6 +36,7 @@ private:
 	std::vector<Triangles>Triangle;
 	std::vector<Square>Squares;
 	void setRotation(float degree);
+	void setRotation();
 	Physics physics;
 	//Physics functions
 	void setDir(float degree);
@@ -47,6 +50,7 @@ private:
 	explosion explosions;
 	float otherdt=0;
 public:
+	void setThrust(float thrust);
 	Rocket();
 	~Rocket();
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;

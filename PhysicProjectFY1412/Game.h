@@ -15,6 +15,7 @@ private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	sf::Clock clock;
 	float dt;
+	bool running;
 	Rocket rocket;
 	Earth earth;
 	float unalterddt;
@@ -25,6 +26,7 @@ public:
 	void Update(sf::RenderWindow & window, sf::Mouse &mouse);
 	void rocketSpin(float scale);
 	void rocketSpin(int degree);
+	void rocketThrust(float thrust);
 };
 
 
