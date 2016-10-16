@@ -173,6 +173,7 @@
     <ClInclude Include="functions.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI.h" />
+    <ClInclude Include="House.h" />
     <ClInclude Include="ResetButton.h" />
     <ClInclude Include="Rocket.h" />
     <ClInclude Include="RotationButton.h" />

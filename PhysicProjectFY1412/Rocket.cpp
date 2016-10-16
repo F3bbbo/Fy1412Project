@@ -25,6 +25,9 @@ Rocket::Rocket()
 	//Set the initial position of the rocket
 //	pos = sf::Vector2f(400, 400);
 	pos = sf::Vector2f(930, 292);
+	oldposition = pos;
+	colisionfire = false;
+	unalterddt = 0;
 	rocketSprite.setPosition(pos);
 	fireSprite.setPosition(pos);
 	// sets the bounding boxes for the rocket
@@ -83,7 +86,10 @@ void Rocket::draw(sf::RenderTarget & target, sf::RenderStates states) const
 		target.draw(fireSprite);
 	}
 	//rocket
+	if(colisionfire==false)
+	{
 	target.draw(rocketSprite);
+	}
 
 	//hitbox
 		target.draw(circle[0]);
@@ -235,6 +241,8 @@ void Rocket::reset()
 	//screentext
 	screenText.fuelMass.setString("Fuel Mass: " + toString(physics.fuelMass, 0));
 	screenText.velocity.setString("Velocity: 0");
+	colisionfire = false;
+	unalterddt = 0;
 }
 
 bool Rocket::colision(sf::Vector3f circle)
@@ -250,17 +258,23 @@ bool Rocket::colision(sf::Vector3f circle)
 	return false;
 }
 
-void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float dt)
+void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float dt, bool colision)
 {
+	unalterddt = unalterddt + dt;
+	if (unalterddt <= 2)
+	{
+		colision = false;
+	}
+	colisionfire = colision;
 	float rocketdt;
 	rocketdt = dt * 100;
-	if (true == collisioncheckbetweencirclesandtriangle(circle[0].getplacex() + circle[0].getradius(), circle[0].getplacey() + circle[0].getradius(), circle[0].getradius(), Triangle[0].getpoint1(), Triangle[0].getpoint2(), Triangle[0].getpoint3(), Triangle[0].getside1normal(), Triangle[0].getside2normal(), Triangle[0].getside3normal()))
-				std::cout << "woorks" << std::endl;
+
 //	circle[0].setplacex(mouse.getPosition(window).x);
 //	circle[0].setplacey(mouse.getPosition(window).y);
 //	Triangle[0].setpoisiton((sf::Vector2f(mouse.getPosition(window).x,mouse.getPosition(window).y)));
 	//Physics
-	
+	if(colision == false)
+	{
 	nextPosition(rocketdt);
 	nextVelocity(rocketdt, earth);
 	updateMass(rocketdt);
@@ -270,10 +284,17 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	setRotation();
 	pos = makeScreenPos(physics.position);
 	setPos(pos.x, pos.y);
-	explosions.update(origin, sf::Vector2f(/*pos.x, pos.y*/ 500,500), rocketdt/10);// EXPLOSION
+	oldposition = pos;
+	}
+	if(colision == true)
+	explosions.update(origin, sf::Vector2f(oldposition.x, oldposition.y), rocketdt/10);// EXPLOSION
+
+	if(colision == false)
+	{
 	Triangle[0].Triangleuppdate();
 	Squares[0].SquareUpdate();
 	Squares[1].SquareUpdate();
+	}
 	//std::cout << physics.velDir.x << " " << physics.velDir.y << std::endl;
 	//std::cout << physics.angle << std::endl;
 }

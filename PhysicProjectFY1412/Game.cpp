@@ -4,7 +4,9 @@
 Game::Game()
 {
 	dt = 0;
+	colision = false;
 	running = false;
+	extradt = 0;
 }
 
 Game::~Game()
@@ -29,7 +31,12 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 
 	if (running)
 	{
-		rocket.update(mouse, window, earth, dt);
+	//	extradt = dt + extradt;
+	//	if (extradt >= 2)
+	//	{
+			colision = rocket.colision(earth.circlerxy());
+	//	}
+		rocket.update(mouse, window, earth, dt,colision);
 	}
 
 	earth.update(mouse, window);
@@ -43,8 +50,8 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 		String = to_string(Number);
 		cout << "yvalue " << String << endl;
 	}
-	if (true == rocket.colision(earth.circlerxy()))
-		cout << "works" << endl;
+	
+		
 
 //	circle[0].setplacex(376);
 //	circle[0].setplacey(322);

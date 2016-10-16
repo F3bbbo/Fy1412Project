@@ -53,7 +53,10 @@ private:
 	sf::Vector2f nextPosition(float dt);
 	void updateMass(float dt);
 	explosion explosions;
-	float otherdt=0;
+	sf::Vector2f oldposition;
+	bool colisionfire;
+	float unalterddt;
+	float otherdt;
 	ScreenText screenText;
 public:
 	void setThrust(float thrust);
@@ -64,7 +67,7 @@ public:
 	void rotate(float degree);
 	void reset();
 	bool colision(sf::Vector3f circle);
-	void update(sf::Mouse &mouse, sf::Window &window, Earth &earth, float dt);
+	void update(sf::Mouse &mouse, sf::Window &window, Earth &earth, float dt, bool colision);
 };
 
 

@@ -15,7 +15,9 @@ private:
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 	sf::Clock clock;
 	float dt;
+	float extradt;
 	bool running;
+	bool colision;
 	Rocket rocket;
 	Earth earth;
 	float unalterddt;
