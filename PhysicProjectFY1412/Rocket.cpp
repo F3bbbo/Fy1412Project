@@ -233,8 +233,8 @@ void Rocket::reset()
 	setRotation();
 	explosions.resetfunction();
 	//screentext
-	screenText.fuelMass.setString("Fuel Mass: " + toString(physics.fuelMass, 1));
-	screenText.velocity.setString("Velocity: 0.0");
+	screenText.fuelMass.setString("Fuel Mass: " + toString(physics.fuelMass, 0));
+	screenText.velocity.setString("Velocity: 0");
 }
 
 bool Rocket::colision(sf::Vector3f circle)
@@ -265,8 +265,8 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	nextVelocity(rocketdt, earth);
 	updateMass(rocketdt);
 	//Screen
-	screenText.velocity.setString("Velocity: " + toString(physics.velocity, 1));
-	screenText.fuelMass.setString("Fuel Mass: " + toString(physics.fuelMass, 1));
+	screenText.velocity.setString("Velocity: " + toString(physics.velocity, 0));
+	screenText.fuelMass.setString("Fuel Mass: " + toString(physics.fuelMass, 0));
 	setRotation();
 	pos = makeScreenPos(physics.position);
 	setPos(pos.x, pos.y);
