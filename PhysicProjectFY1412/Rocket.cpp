@@ -51,6 +51,20 @@ Rocket::Rocket()
 	Squares[1].setorigin(sf::Vector2f(halfRocketWidth - 60, 0.f + 37));
 	Squares[1].setpoisiton(pos);
 	Squares[1].scale(sf::Vector2f(scale, scale));
+	//ScreenText
+	screenText.textFont.loadFromFile("Textures\\fonts\\STENCIL.TTF");
+	screenText.fuelMass.setFont(screenText.textFont);
+	screenText.fuelMass.setPosition(1000, 100);
+	screenText.fuelMass.setCharacterSize(30);
+	screenText.fuelMass.setStyle(sf::Text::Bold);
+	screenText.fuelMass.setColor(sf::Color::White);
+	screenText.velocity.setFont(screenText.textFont);
+	screenText.velocity.setPosition(1000, 150);
+	screenText.velocity.setCharacterSize(30);
+	screenText.velocity.setStyle(sf::Text::Bold);
+	screenText.velocity.setColor(sf::Color::White);
+;
+
 
 	//Set physics variables
 	reset();
@@ -63,14 +77,15 @@ Rocket::~Rocket()
 
 void Rocket::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
-
+	//flame
 	if (physics.thrust && physics.fuelMass > 0.0f)
 	{
 		target.draw(fireSprite);
 	}
+	//rocket
 	target.draw(rocketSprite);
 
-
+	//hitbox
 		target.draw(circle[0]);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
 	{
@@ -78,7 +93,11 @@ void Rocket::draw(sf::RenderTarget & target, sf::RenderStates states) const
 		target.draw(Squares[0]);
 		target.draw(Squares[1]);
 	}
+	//explosion
 	target.draw(explosions);
+	//screentext
+	target.draw(screenText.fuelMass);
+	target.draw(screenText.velocity);
 }
 
 void Rocket::setPos(float x, float y)
@@ -128,6 +147,8 @@ void Rocket::setDir(float degree)
 	degree = degree * PI / 180;
 	physics.thrustDir.x = sin(degree);
 	physics.thrustDir.y = -cos(degree);
+	physics.velDir.x = sin(degree);
+	physics.velDir.y = -cos(degree);
 
 }
 
@@ -138,7 +159,7 @@ float Rocket::thrustForce()
 
 sf::Vector2f Rocket::totalForce(Earth &earth)
 {
-	sf::Vector2f returnForce = physics.thrustDir * thrustForce() + gForce(earth);
+	sf::Vector2f returnForce = physics.velDir * thrustForce() + gForce(earth);
 	return returnForce;
 }
 
@@ -198,16 +219,19 @@ void Rocket::reset()
 	pos = sf::Vector2f(930, 292);
 	physics.angle = 0;
 	physics.dMass = 100;
-	physics.fuelMass = 9000;
+	physics.fuelMass = 13000;
 	physics.rocketMass = 1000;
 	physics.VeSize = 3000;
-	physics.velocity = 200;
+	physics.velocity = 300;
 	physics.position = makeWorldPos(pos);
 	physics.velDir = sf::Vector2f(0, -1);
 	physics.thrust = 0.0f;
 	setDir(physics.angle);
 	setRotation();
 	explosions.resetfunction();
+	//screentext
+	screenText.fuelMass.setString("Fuel Mass: " + toString(physics.fuelMass, 1));
+	screenText.velocity.setString("Velocity: 0.0");
 }
 
 bool Rocket::colision(sf::Vector3f circle)
@@ -238,6 +262,8 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	nextVelocity(rocketdt, earth);
 	updateMass(rocketdt);
 	//Screen
+	screenText.velocity.setString("Velocity: " + toString(physics.velocity, 1));
+	screenText.fuelMass.setString("Fuel Mass: " + toString(physics.fuelMass, 1));
 	setRotation();
 	pos = makeScreenPos(physics.position);
 	setPos(pos.x, pos.y);

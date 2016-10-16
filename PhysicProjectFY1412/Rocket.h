@@ -23,6 +23,12 @@ class Rocket : public sf::Drawable
 		float angle;
 		float thrust;
 	};
+	struct ScreenText
+	{
+		sf::Font textFont;
+		sf::Text velocity;
+		sf::Text fuelMass;
+	};
 private:
 	sf::Sprite rocketSprite;
 	sf::Texture rocketTex;
@@ -48,6 +54,7 @@ private:
 	void updateMass(float dt);
 	explosion explosions;
 	float otherdt=0;
+	ScreenText screenText;
 public:
 	void setThrust(float thrust);
 	Rocket();

@@ -2,6 +2,9 @@
 #define FUNCTIONS_H
 
 #include <SFML\Graphics.hpp>
+#include <string>
+#include <sstream>
+#include <iomanip>
 
 sf::Vector2f makeWorldPos(sf::Vector2f &screenPos);
 
@@ -12,6 +15,8 @@ float length(sf::Vector2f &vec);
 sf::Vector2f normalize(sf::Vector2f &vec);
 
 sf::Vector2f multiply(sf::Vector2f &vec,double num);
+
+std::string toString(float num, int dec);
 
 
 #endif

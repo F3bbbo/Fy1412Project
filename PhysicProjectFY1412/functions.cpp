@@ -28,3 +28,10 @@ sf::Vector2f multiply(sf::Vector2f & vec, double num)
 {
 	return sf::Vector2f(vec.x*num, vec.y*num);
 }
+
+std::string toString(float num, int dec)
+{
+	std::stringstream stream;
+	stream << std::fixed << std::setprecision(dec) << num;
+	return stream.str();
+}
