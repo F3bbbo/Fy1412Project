@@ -204,11 +204,14 @@ void Rocket::updateMass(float dt)
 
 void Rocket::rotate(float degree)
 {
-	rocketSprite.rotate(degree);
-	fireSprite.rotate(degree);
-	Triangle[0].rotatetriangle(degree);
-	physics.angle += degree;
-	setDir(physics.angle);
+	if (-35 < physics.angle + degree && physics.angle + degree < 35 )
+	{
+		rocketSprite.rotate(degree);
+		fireSprite.rotate(degree);
+		Triangle[0].rotatetriangle(degree);
+		physics.angle += degree;
+		setDir(physics.angle);
+	}
 }
 
 void Rocket::reset()
