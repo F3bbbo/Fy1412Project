@@ -18,6 +18,7 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(earth);
 	target.draw(rocket);
+	target.draw(house);
 
 }
 void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
@@ -37,6 +38,7 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 			colision = rocket.colision(earth.circlerxy());
 	//	}
 		rocket.update(mouse, window, earth, dt,colision);
+
 	}
 
 	earth.update(mouse, window);

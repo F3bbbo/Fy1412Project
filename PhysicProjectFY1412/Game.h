@@ -8,6 +8,7 @@
 #include "Collision.h"
 #include "Triangle.h"
 #include "Earth.h"
+#include "House.h"
 using namespace std;
 class Game : public sf::Drawable
 {
@@ -19,6 +20,7 @@ private:
 	bool running;
 	bool colision;
 	Rocket rocket;
+	Houses house;
 	Earth earth;
 	float unalterddt;
 

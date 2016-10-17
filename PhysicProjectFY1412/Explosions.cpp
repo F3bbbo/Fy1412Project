@@ -68,6 +68,11 @@ void explosion::setm(float m)
 	this->m = m * 10000000;
 }
 
+float explosion::getP()
+{
+	return P;
+}
+
 
 void explosion::circleradiusexpansion(float dt)
 {

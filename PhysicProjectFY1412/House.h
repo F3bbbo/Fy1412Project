@@ -9,13 +9,16 @@ class Houses : public sf::Drawable
 {
 private:
 	Square square;
+	sf::Vector2f positon;
+	sf::Vector2f scale;
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	sf::Texture Texture[4];
-	sf::Sprite fireSprite;
+	sf::Sprite sprite;
 public:
 	Houses();
 	void changesprite(float P);
 	~Houses();
+	
 };
 
 

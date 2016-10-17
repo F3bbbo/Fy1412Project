@@ -37,6 +37,7 @@ private:
 	sf::Vector2f pos;
 	sf::Vector2f origin;
 	sf::Clock clock;
+	float P;
 	std::vector<Circles> circle;
 	std::vector<Triangles>Triangle;
 	std::vector<Square>Squares;
@@ -60,6 +61,7 @@ private:
 	ScreenText screenText;
 public:
 	void setThrust(float thrust);
+	float returnp();
 	Rocket();
 	~Rocket();
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
@@ -67,6 +69,7 @@ public:
 	void rotate(float degree);
 	void reset();
 	bool colision(sf::Vector3f circle);
+	bool colisionhouse(Square &square);
 	void update(sf::Mouse &mouse, sf::Window &window, Earth &earth, float dt, bool colision);
 };
 

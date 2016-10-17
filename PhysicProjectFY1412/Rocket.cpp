@@ -15,7 +15,7 @@ Rocket::Rocket()
 	float scale = 0.1;//0.5;
 	rocketSprite.scale(scale, scale);
 	fireSprite.scale(scale, scale);
-
+	p = 0;
 	//Sets origin of rocket and fire to the same point
 	float halfRocketWidth = rocketSprite.getLocalBounds().width / 2;
 	float halfRocketHeight = rocketSprite.getLocalBounds().height / 2;
@@ -148,6 +148,12 @@ void Rocket::setThrust(float thrust)
 	physics.thrust = thrust;
 }
 
+float Rocket::returnp()
+{
+
+	return 0.0f;
+}
+
 void Rocket::setDir(float degree)
 {
 	degree = degree * PI / 180;
@@ -258,6 +264,11 @@ bool Rocket::colision(sf::Vector3f circle)
 	return false;
 }
 
+bool Rocket::colisionhouse(Square &square)
+{
+	return false;
+}
+
 void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float dt, bool colision)
 {
 	unalterddt = unalterddt + dt;
@@ -288,7 +299,7 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	}
 	if(colision == true)
 	explosions.update(origin, sf::Vector2f(oldposition.x, oldposition.y), rocketdt/10);// EXPLOSION
-
+	P=explosions.getP();
 	if(colision == false)
 	{
 	Triangle[0].Triangleuppdate();
