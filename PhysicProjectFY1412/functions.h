@@ -18,5 +18,7 @@ sf::Vector2f multiply(sf::Vector2f &vec,double num);
 
 std::string toString(float num, int dec);
 
+float dotProduct(sf::Vector2f vec1, sf::Vector2f vec2);
+
 
 #endif

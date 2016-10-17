@@ -1,5 +1,7 @@
 #include "Collision.h"
 #include <iostream>
+
+#define EPSILON 0.00001
 bool collisioncheckbetweencircles(float x1, float y1, float radius1, float x2, float y2, float radius2)
 {
 
@@ -295,6 +297,33 @@ bool collisioncheckbetweencircleandsquare(float x1, float y1, float radius1, sf:
 	if (true == lineandcirclecollision(x1, y1, radius1, point1, point4))
 		return true;
 
+
+	return false;
+}
+
+bool collisionLineLine(sf::Vector2f line1P1, sf::Vector2f line1P2, sf::Vector2f line2P1, sf::Vector2f line2P2)
+{
+	sf::Vector2f origin1 = line1P1;
+	sf::Vector2f dist1 = line1P2 - line1P1;
+	sf::Vector2f origin2 = line2P1;
+	sf::Vector2f dist2 = line2P2 - line2P1;
+	sf::Vector2f invDist1 = sf::Vector2f(-dist1.y, dist1.x);
+	sf::Vector2f invDist2 = sf::Vector2f(-dist2.y, dist2.x);
+	float test = dotProduct(dist1, invDist2);
+	if (-EPSILON < test && test < EPSILON)
+	{
+		return false;
+	}
+	else
+	{
+		float s = dotProduct((origin2 - origin1), invDist2) / test;
+		float t = dotProduct((origin1 - origin2), invDist1) / dotProduct(dist2, invDist1);
+		if (0 < s && s < 1 && 0 < t && t < 1)
+		{
+			return true;
+		}
+
+	}
 
 	return false;
 }

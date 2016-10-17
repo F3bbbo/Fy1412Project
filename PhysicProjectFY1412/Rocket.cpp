@@ -15,7 +15,7 @@ Rocket::Rocket()
 	float scale = 0.1;//0.5;
 	rocketSprite.scale(scale, scale);
 	fireSprite.scale(scale, scale);
-	p = 0;
+	P = 0;
 	//Sets origin of rocket and fire to the same point
 	float halfRocketWidth = rocketSprite.getLocalBounds().width / 2;
 	float halfRocketHeight = rocketSprite.getLocalBounds().height / 2;

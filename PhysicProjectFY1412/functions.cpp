@@ -35,3 +35,8 @@ std::string toString(float num, int dec)
 	stream << std::fixed << std::setprecision(dec) << num;
 	return stream.str();
 }
+
+float dotProduct(sf::Vector2f vec1, sf::Vector2f vec2)
+{
+	return vec1.x * vec2.x + vec1.y * vec2.y;
+}
