@@ -156,6 +156,7 @@
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI.cpp" />
+    <ClCompile Include="House.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ResetButton.cpp" />
     <ClCompile Include="Rocket.cpp" />
