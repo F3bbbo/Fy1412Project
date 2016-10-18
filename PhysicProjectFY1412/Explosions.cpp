@@ -93,7 +93,7 @@ Circles explosion::circleretriver()
 }
 void explosion::update(sf::Vector2f origin, sf::Vector2f position,float dt)
 {
-	circle->setorigin(sf::Vector2f(circle->getradius(), circle->getradius()));
+	circle->setorigin(sf::Vector2f(circle->getradius()+ origin.x, circle->getradius()+ origin.y));
 //	circle->setorigin(origin);
 	circle->setpoisiton(position);
 	setd(SCREENTOWORLDTRANS*circle->getradius());

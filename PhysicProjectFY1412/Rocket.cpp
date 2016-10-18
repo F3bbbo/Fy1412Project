@@ -40,7 +40,7 @@ Rocket::Rocket()
 	Triangle[0].setpoisiton(sf::Vector2f(pos.x,pos.y));
 	Triangle[0].scale(sf::Vector2f(scale, scale));
 	Triangle[0].Triangleuppdate();
-	origin = sf::Vector2f(halfRocketWidth, halfRocketHeight);
+	origin = sf::Vector2f(0,-200*scale );
 	Circles circle1 = Circles(10, 0, 0);
 	circle.push_back(circle1);
 	Squares = std::vector<Square>(0);
