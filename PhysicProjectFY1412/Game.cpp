@@ -18,8 +18,8 @@ Game::~Game()
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	target.draw(earth);
-	target.draw(rocket);
 	target.draw(house);
+	target.draw(rocket);
 
 }
 void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)

@@ -319,7 +319,7 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	oldposition = pos;
 	}
 	if(colision == true)
-	explosions.update(origin, sf::Vector2f(oldposition.x, oldposition.y), rocketdt/10);// EXPLOSION
+	explosions.update(physics.velDir * -220.0f * 0.1f, sf::Vector2f(oldposition.x, oldposition.y), rocketdt/10);// EXPLOSION
 	
 	if (explosioncolideswithhouse == true && onlyonece == true)
 	{
