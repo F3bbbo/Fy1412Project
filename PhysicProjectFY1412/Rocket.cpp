@@ -58,12 +58,12 @@ Rocket::Rocket()
 	//ScreenText
 	screenText.textFont.loadFromFile("Textures\\fonts\\STENCIL.TTF");
 	screenText.fuelMass.setFont(screenText.textFont);
-	screenText.fuelMass.setPosition(1000, 100);
+	screenText.fuelMass.setPosition(1400, 100);
 	screenText.fuelMass.setCharacterSize(30);
 	screenText.fuelMass.setStyle(sf::Text::Bold);
 	screenText.fuelMass.setColor(sf::Color::White);
 	screenText.velocity.setFont(screenText.textFont);
-	screenText.velocity.setPosition(1000, 150);
+	screenText.velocity.setPosition(1400, 150);
 	screenText.velocity.setCharacterSize(30);
 	screenText.velocity.setStyle(sf::Text::Bold);
 	screenText.velocity.setColor(sf::Color::White);

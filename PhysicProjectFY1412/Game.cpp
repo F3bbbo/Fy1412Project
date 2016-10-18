@@ -8,6 +8,18 @@ Game::Game()
 	running = false;
 	explosioncolideswithhouse = false;
 	extradt = 0;
+	textFont.loadFromFile("Textures\\fonts\\STENCIL.TTF");
+	startText.setFont(textFont);
+	startText.setPosition(500, 20);
+	startText.setCharacterSize(40);
+	startText.setStyle(sf::Text::Bold);
+	startText.setColor(sf::Color::White);
+	startText.setString("Hit the house with the rocket.");
+	endText.setFont(textFont);
+	endText.setPosition(1000, 100);
+	endText.setCharacterSize(50);
+	endText.setStyle(sf::Text::Bold);
+	endText.setColor(sf::Color::White);
 }
 
 Game::~Game()
@@ -20,6 +32,8 @@ void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(earth);
 	target.draw(house);
 	target.draw(rocket);
+	target.draw(startText);
+	target.draw(endText);
 
 }
 void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)

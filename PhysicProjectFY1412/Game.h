@@ -24,6 +24,9 @@ private:
 	Houses house;
 	Earth earth;
 	float unalterddt;
+	sf::Font textFont;
+	sf::Text startText;
+	sf::Text endText;
 
 public:
 	Game();
