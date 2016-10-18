@@ -29,7 +29,7 @@ explosion::explosion()
 	B = 0;
 	a = 0;Y = 0;G = 0; z = 0;
 	circle->setradius(0);
-	m = 200000000*1000000;
+	m = 10*1000000;
 	pk = 1000;
 	p2 = 1;
 	time = 0;
@@ -87,6 +87,14 @@ float explosion::getP()
 	return P;
 }
 
+bool explosion::done()
+{
+	if (time > 0.0f)
+		return true;
+	else
+		return false;
+}
+
 
 void explosion::circleradiusexpansion(float dt)
 {
@@ -125,15 +133,15 @@ void explosion::update(sf::Vector2f origin, sf::Vector2f position,float dt)
 	airdamping();
 	if(P>60000 && P<70000)
 		circle->settexture(&ExplosionsTex[1]);
-	if (P>40000 && P<60000)
+	else if (P>40000 && P<60000)
 		circle->settexture(&ExplosionsTex[2]);
-	if (P>20000 && P<40000)
+	else if (P>20000 && P<40000)
 		circle->settexture(&ExplosionsTex[3]);
-	if (P>10000 && P<20000)
+	else if (P>10000 && P<20000)
 		circle->settexture(&ExplosionsTex[4]);
-	if (P>2000 && P<10000)
+	else if (P>2000 && P<10000)
 		circle->settexture(&ExplosionsTex[5]);
-	if (P <= 1900);
+	else if (P <= 1900)
 	{
 		
 	time = dt + time; //klockan efter explosion

@@ -32,6 +32,7 @@ public:
 	void setd(float d);
 	void setm(float m);
 	float getP();
+	bool done();
 	void update(sf::Vector2f, sf::Vector2f,float);
 	void circleradiusexpansion(float dt);
 	void resetfunction();

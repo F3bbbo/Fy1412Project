@@ -16,10 +16,11 @@ Game::Game()
 	startText.setColor(sf::Color::White);
 	startText.setString("Hit the house with the rocket.");
 	endText.setFont(textFont);
-	endText.setPosition(1000, 100);
+	endText.setPosition(800, 400);
 	endText.setCharacterSize(50);
 	endText.setStyle(sf::Text::Bold);
 	endText.setColor(sf::Color::White);
+	reset();
 }
 
 Game::~Game()
@@ -69,7 +70,15 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 		String = to_string(Number);
 		cout << "yvalue " << String << endl;
 	}
-	
+
+	if (house.isBroken())
+	{
+		endText.setString("You won!");
+	}
+	else if (rocket.explosionDone())
+	{
+		endText.setString("You lost!");
+	}
 		
 
 //	circle[0].setplacex(376);
@@ -101,6 +110,7 @@ void Game::reset()
 	rocket.reset();
 	house.housereset();
 	explosioncolideswithhouse = false;
+	endText.setString("");
 }
 
 void Game::rocketSpin(float scale)

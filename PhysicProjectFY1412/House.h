@@ -11,6 +11,7 @@ private:
 	Square square;
 	sf::Vector2f positon;
 	sf::Vector2f scale;
+	bool broken;
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	sf::Texture Texture[4];
 	sf::Sprite sprite;
@@ -19,6 +20,7 @@ public:
 	void changesprite(float P);
 	~Houses();
 	void housereset();
+	bool isBroken();
 	Square returnsquare();
 };
 

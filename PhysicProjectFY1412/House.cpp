@@ -32,16 +32,26 @@ Houses::Houses()
 	sprite.setRotation(180);
 	square.setrotatesquare(180);
 	square.SquareUpdate();
+
+	broken = false;
 }
 
 void Houses::changesprite(float P)
 {
 	if (700000 <= P)
+	{
+		broken = true;
 		sprite.setTexture(Texture[3]);
+	}
 	else if (1500 <= P)
+	{
 		sprite.setTexture(Texture[2]);
+	}
 	else if (0.1 <= P)
+	{
 		sprite.setTexture(Texture[1]);
+	}
+
 }
 
 Houses::~Houses()
@@ -52,7 +62,12 @@ Houses::~Houses()
 void Houses::housereset()
 {
 	sprite.setTexture(Texture[0]);
-	
+	broken = false;
+}
+
+bool Houses::isBroken()
+{
+	return broken;
 }
 
 Square Houses::returnsquare()

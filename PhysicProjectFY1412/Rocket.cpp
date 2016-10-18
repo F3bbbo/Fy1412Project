@@ -241,6 +241,11 @@ void Rocket::rotate(float degree)
 	}
 }
 
+bool Rocket::explosionDone()
+{
+	return explosions.done();
+}
+
 void Rocket::reset()
 {
 	pos = sf::Vector2f(930, 292);
