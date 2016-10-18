@@ -107,6 +107,7 @@ void explosion::circleradiusexpansion(float dt)
 }
 void explosion::resetfunction()
 {
+	circle->SetFillColor(sf::Color(255, 255, 255));
 	circle->setradius(0);
 	P = 0;
 	time = 0;//yoyo kassam G
