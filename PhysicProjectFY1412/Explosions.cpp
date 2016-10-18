@@ -3,9 +3,11 @@
 #define SCREENTOWORLDTRANS 6371200.0f / 224.5f 
 void explosion::airdamping()
 {
-	t = 40000000 / 8000; //40*10^6m and 8*10^3m 
+	t = 40000000 / 8000; //40*10^6m and 8*10^3m
+	p2 = 40 * 10 ^ 6;
 	k = (log(pk / p2)) / t;
-	P=P - P*exp(-k*t);
+//	P=P - P*exp(-k*t);
+	P=P*exp(-k*t);
 	
 }
 void explosion::draw(sf::RenderTarget & target, sf::RenderStates states) const
@@ -27,7 +29,7 @@ explosion::explosion()
 	B = 0;
 	a = 0;Y = 0;G = 0; z = 0;
 	circle->setradius(0);
-	m = 2*1000000;
+	m = 5*1000000;
 	pk = 1000;
 	p2 = 1;
 }
