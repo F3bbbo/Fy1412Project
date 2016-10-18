@@ -31,6 +31,7 @@ Houses::Houses()
 	square.setpoisiton(positon);
 	sprite.setRotation(180);
 	square.setrotatesquare(180);
+	square.SquareUpdate();
 }
 
 void Houses::changesprite(float P)
@@ -46,5 +47,10 @@ void Houses::changesprite(float P)
 Houses::~Houses()
 {
 
+}
+
+Square Houses::returnsquare()
+{
+	return square;
 }
 

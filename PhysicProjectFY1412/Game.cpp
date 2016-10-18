@@ -1,11 +1,12 @@
 #include "Game.h"
 #include <sstream>
-
+#include <iostream>
 Game::Game()
 {
 	dt = 0;
 	colision = false;
 	running = false;
+	explosioncolideswithhouse = false;
 	extradt = 0;
 }
 
@@ -34,11 +35,13 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 	{
 	//	extradt = dt + extradt;
 	//	if (extradt >= 2)
-	//	{
-			colision = rocket.colision(earth.circlerxy());
+	//	{			 
+			colision = rocket.colision(earth.circlerxy(),house.returnsquare());
+			if (true == rocket.colisionexplosionandhouse(house.returnsquare()))
+				explosioncolideswithhouse = true;
 	//	}
-		rocket.update(mouse, window, earth, dt,colision);
-
+		rocket.update(mouse, window, earth, dt,colision, explosioncolideswithhouse);
+		house.changesprite(rocket.returnp());
 	}
 
 	earth.update(mouse, window);

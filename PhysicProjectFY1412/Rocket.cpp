@@ -54,6 +54,7 @@ Rocket::Rocket()
 	Squares[1].setorigin(sf::Vector2f(halfRocketWidth - 60, 0.f + 37));
 	Squares[1].setpoisiton(pos);
 	Squares[1].scale(sf::Vector2f(scale, scale));
+	onlyonece = true;
 	//ScreenText
 	screenText.textFont.loadFromFile("Textures\\fonts\\STENCIL.TTF");
 	screenText.fuelMass.setFont(screenText.textFont);
@@ -143,6 +144,12 @@ void Rocket::setRotation()
 	setRotation(physics.angle);
 }
 
+float Rocket::preturner()
+{
+	
+	return P;
+}
+
 void Rocket::setThrust(float thrust)
 {
 	physics.thrust = thrust;
@@ -151,7 +158,7 @@ void Rocket::setThrust(float thrust)
 float Rocket::returnp()
 {
 
-	return 0.0f;
+	return P;
 }
 
 void Rocket::setDir(float degree)
@@ -214,6 +221,13 @@ void Rocket::updateMass(float dt)
 	}
 }
 
+bool Rocket::colisionexplosionandhouse(Square square)
+{
+	if(true==collisioncheckbetweencircleandsquare(explosions.circleretriver().getplacex(), explosions.circleretriver().getplacey(), explosions.circleretriver().getradius(),square.getpoint1(), square.getpoint2(), square.getpoint3(), square.getpoint4()))
+	return true;
+	return false;
+}
+
 void Rocket::rotate(float degree)
 {
 	if (-35 < physics.angle + degree && physics.angle + degree < 35 )
@@ -251,7 +265,7 @@ void Rocket::reset()
 	unalterddt = 0;
 }
 
-bool Rocket::colision(sf::Vector3f circle)
+bool Rocket::colision(sf::Vector3f circle,Square &square)
 {
 
 	if (true == collisioncheckbetweencirclesandtriangle(circle.x, circle.y, circle.z, Triangle[0].getpoint1(), Triangle[0].getpoint2(), Triangle[0].getpoint3(), Triangle[0].getside1normal(), Triangle[0].getside2normal(), Triangle[0].getside3normal()))
@@ -261,15 +275,21 @@ bool Rocket::colision(sf::Vector3f circle)
 		if (true == collisioncheckbetweencircleandsquare(circle.x, circle.y, circle.z, Squares[i].getpoint1(), Squares[i].getpoint2(), Squares[i].getpoint3(), Squares[i].getpoint4()))
 			return true;
 	}
+	if (true == colisionhouse(square))
+		return true;
+
 	return false;
 }
 
 bool Rocket::colisionhouse(Square &square)
 {
+	if(true==collisionsquareandtriangleintersection(Triangle[0], square))
+	return true;
+
 	return false;
 }
 
-void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float dt, bool colision)
+void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float dt, bool colision,bool explosioncolideswithhouse)
 {
 	unalterddt = unalterddt + dt;
 	if (unalterddt <= 2)
@@ -299,7 +319,13 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	}
 	if(colision == true)
 	explosions.update(origin, sf::Vector2f(oldposition.x, oldposition.y), rocketdt/10);// EXPLOSION
-	P=explosions.getP();
+	
+	if (explosioncolideswithhouse == true && onlyonece == true)
+	{
+		P=explosions.getP();
+		onlyonece = false;
+	}
+
 	if(colision == false)
 	{
 	Triangle[0].Triangleuppdate();

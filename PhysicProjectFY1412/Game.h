@@ -19,6 +19,7 @@ private:
 	float extradt;
 	bool running;
 	bool colision;
+	bool explosioncolideswithhouse;
 	Rocket rocket;
 	Houses house;
 	Earth earth;

@@ -328,4 +328,45 @@ bool collisionLineLine(sf::Vector2f line1P1, sf::Vector2f line1P2, sf::Vector2f 
 	return false;
 }
 
+bool collisionsquareandtriangleintersection(Triangles triangle, Square square)
+{	
+	sf::Vector2f trianglepoint1, trianglepoint2, trianglepoint3,Squarepoint1,Squarepoint2,Squarepoint3,Squarepoint4;
+	trianglepoint1=triangle.getpoint1();
+	trianglepoint2=triangle.getpoint2();
+	trianglepoint3=triangle.getpoint3();
+	Squarepoint1 = square.getpoint1();
+	Squarepoint2 = square.getpoint2();
+	Squarepoint3 = square.getpoint3();
+	Squarepoint4 = square.getpoint4();
+	if (true == collisionLineLine(trianglepoint1, trianglepoint2, Squarepoint1, Squarepoint2))
+		return true;
+	if (true == collisionLineLine(trianglepoint1, trianglepoint2, Squarepoint2, Squarepoint3))
+		return true;
+	if (true == collisionLineLine(trianglepoint1, trianglepoint2, Squarepoint3, Squarepoint4))
+		return true;
+	if (true == collisionLineLine(trianglepoint1, trianglepoint2, Squarepoint4, Squarepoint1))
+		return true;
+
+
+	if (true == collisionLineLine(trianglepoint2, trianglepoint3, Squarepoint1, Squarepoint2))
+		return true;
+	if (true == collisionLineLine(trianglepoint2, trianglepoint3, Squarepoint2, Squarepoint3))
+		return true;
+	if (true == collisionLineLine(trianglepoint2, trianglepoint3, Squarepoint3, Squarepoint4))
+		return true;
+	if (true == collisionLineLine(trianglepoint2, trianglepoint3, Squarepoint4, Squarepoint1))
+		return true;
+
+	if (true == collisionLineLine(trianglepoint3, trianglepoint1, Squarepoint1, Squarepoint2))
+		return true;
+	if (true == collisionLineLine(trianglepoint3, trianglepoint1, Squarepoint2, Squarepoint3))
+		return true;
+	if (true == collisionLineLine(trianglepoint3, trianglepoint1, Squarepoint3, Squarepoint4))
+		return true;
+	if (true == collisionLineLine(trianglepoint3, trianglepoint1, Squarepoint4, Squarepoint1))
+		return true;
+
+	return false;
+}
+
 

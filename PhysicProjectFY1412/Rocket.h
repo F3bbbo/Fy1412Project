@@ -50,16 +50,19 @@ private:
 	sf::Vector2f totalForce(Earth &earth);
 	sf::Vector2f gForce(Earth &earth);
 	//void rotateDir(float degree);
+	bool onlyonece;
 	sf::Vector2f nextVelocity(float dt, Earth &earth);
 	sf::Vector2f nextPosition(float dt);
 	void updateMass(float dt);
 	explosion explosions;
 	sf::Vector2f oldposition;
 	bool colisionfire;
+
 	float unalterddt;
 	float otherdt;
 	ScreenText screenText;
 public:
+	float preturner();
 	void setThrust(float thrust);
 	float returnp();
 	Rocket();
@@ -68,9 +71,10 @@ public:
 	void setPos(float x, float y);
 	void rotate(float degree);
 	void reset();
-	bool colision(sf::Vector3f circle);
-	bool colisionhouse(Square &square);
-	void update(sf::Mouse &mouse, sf::Window &window, Earth &earth, float dt, bool colision);
+	bool colision(sf::Vector3f circle, Square &square);
+	bool colisionhouse(Square &square );
+	bool colisionexplosionandhouse(Square square);
+	void update(sf::Mouse &mouse, sf::Window &window, Earth &earth, float dt, bool colision, bool explosioncolideswithhouse);
 };
 
 

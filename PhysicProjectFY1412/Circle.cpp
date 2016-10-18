@@ -12,6 +12,8 @@ Circles::Circles(int radius, int placex, int placey)
 Circles::~Circles() {}
 void Circles::setpoisiton(sf::Vector2f position)
 {
+	placex = position.x;
+	placey = position.y;
 	circle.setPosition(position);
 }
 void Circles::setorigin(sf::Vector2f Origin)

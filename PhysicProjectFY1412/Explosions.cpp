@@ -76,7 +76,7 @@ float explosion::getP()
 
 void explosion::circleradiusexpansion(float dt)
 {
-	if (P <= 10000)
+	if (P <= 1000)
 	{
 
 	}
@@ -86,6 +86,10 @@ void explosion::circleradiusexpansion(float dt)
 void explosion::resetfunction()
 {
 	circle->setradius(0);
+}
+Circles explosion::circleretriver()
+{
+	return circle[0];
 }
 void explosion::update(sf::Vector2f origin, sf::Vector2f position,float dt)
 {

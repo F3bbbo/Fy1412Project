@@ -18,7 +18,7 @@ public:
 	Houses();
 	void changesprite(float P);
 	~Houses();
-	
+	Square returnsquare();
 };
 
 
