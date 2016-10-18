@@ -9,6 +9,8 @@ Game::Game()
 	explosioncolideswithhouse = false;
 	extradt = 0;
 	textFont.loadFromFile("Textures\\fonts\\STENCIL.TTF");
+	background.loadFromFile("Textures\\game\\background\\girls.png");
+	backgrund.setTexture(background);
 	startText.setFont(textFont);
 	startText.setPosition(500, 20);
 	startText.setCharacterSize(40);
@@ -29,11 +31,13 @@ Game::~Game()
 
 void Game::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
+	target.draw(backgrund);
 	target.draw(earth);
 	target.draw(house);
 	target.draw(rocket);
 	target.draw(startText);
 	target.draw(endText);
+	
 
 }
 void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)

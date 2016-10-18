@@ -20,6 +20,8 @@ private:
 	bool running;
 	bool colision;
 	bool explosioncolideswithhouse;
+	sf::Texture background;
+	sf::Sprite backgrund;
 	Rocket rocket;
 	Houses house;
 	Earth earth;
