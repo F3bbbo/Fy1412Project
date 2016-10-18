@@ -52,7 +52,7 @@ float Earth::gForce(float mass, float radius)
 }
 float Earth::acceleration(float radius)
 {
-	return  G * this->mass / (radius * radius);
+	return  G * this->mass / (radius * radius); //G*(M/R^2)=G
 }
 
 sf::Vector2f Earth::getWorldPos()

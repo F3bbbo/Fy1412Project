@@ -309,8 +309,8 @@ bool collisionLineLine(sf::Vector2f line1P1, sf::Vector2f line1P2, sf::Vector2f 
 	sf::Vector2f dist2 = line2P2 - line2P1;
 	sf::Vector2f invDist1 = sf::Vector2f(-dist1.y, dist1.x);
 	sf::Vector2f invDist2 = sf::Vector2f(-dist2.y, dist2.x);
-	float test = dotProduct(dist1, invDist2);
-	if (-EPSILON < test && test < EPSILON)
+	float test = dotProduct(dist1, invDist2);// if invdist2 ad dist1 gives 90 degress then its parlel since the inverse for dist1 that means that dist1 and dist2 is parallell
+	if (-EPSILON < test && test < EPSILON)// parallell test 
 	{
 		return false;
 	}

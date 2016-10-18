@@ -39,8 +39,4 @@ public:
 	Circles circleretriver();
 };
 
-
-
-
-
 #endif

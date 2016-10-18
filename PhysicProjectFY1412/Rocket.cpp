@@ -94,7 +94,7 @@ void Rocket::draw(sf::RenderTarget & target, sf::RenderStates states) const
 	}
 
 	//hitbox
-		target.draw(circle[0]);
+	//	target.draw(circle[0]);
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::B))
 	{
 		target.draw(Triangle[0]);
@@ -164,9 +164,9 @@ float Rocket::returnp()
 
 void Rocket::setDir(float degree)
 {
-	degree = degree * PI / 180;
-	physics.thrustDir.x = sin(degree);
-	physics.thrustDir.y = -cos(degree);
+	degree = degree * PI / 180; // convert radien;
+	physics.thrustDir.x = sin(degree); //outdate
+	physics.thrustDir.y = -cos(degree); //outdate
 	physics.velDir.x = sin(degree);
 	physics.velDir.y = -cos(degree);
 
@@ -189,7 +189,7 @@ sf::Vector2f Rocket::gForce(Earth &earth)
 	float radius = length(gDir);
 	gDir /= radius;
 	//std::cout << earth.acceleration(radius) << std::endl;
-	return gDir * earth.acceleration(radius) * (physics.fuelMass + physics.rocketMass);
+	return gDir * earth.acceleration(radius) * (physics.fuelMass + physics.rocketMass);//F=ma?
 }
 
 
@@ -317,19 +317,19 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	//Physics
 	if(colision == false)
 	{
-	nextPosition(rocketdt);
-	nextVelocity(rocketdt, earth);
-	updateMass(rocketdt);
+		nextPosition(rocketdt);
+		nextVelocity(rocketdt, earth);
+		updateMass(rocketdt);
 	//Screen
-	screenText.velocity.setString("Velocity: " + toString(physics.velocity, 0));
-	screenText.fuelMass.setString("Fuel Mass: " + toString(physics.fuelMass, 0));
-	setRotation();
-	pos = makeScreenPos(physics.position);
-	setPos(pos.x, pos.y);
-	oldposition = pos;
+		screenText.velocity.setString("Velocity: " + toString(physics.velocity, 0));
+		screenText.fuelMass.setString("Fuel Mass: " + toString(physics.fuelMass, 0));
+		setRotation();
+		pos = makeScreenPos(physics.position);
+		setPos(pos.x, pos.y);
+		oldposition = pos;
 	}
 	if(colision == true)
-	explosions.update(physics.velDir * -220.0f * 0.1f, sf::Vector2f(oldposition.x, oldposition.y), dt);// EXPLOSION
+		explosions.update(physics.velDir * -220.0f * 0.1f, sf::Vector2f(oldposition.x, oldposition.y), dt);// EXPLOSION
 	
 	if (explosioncolideswithhouse == true && onlyonece == true)
 	{
@@ -339,9 +339,9 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 
 	if(colision == false)
 	{
-	Triangle[0].Triangleuppdate();
-	Squares[0].SquareUpdate();
-	Squares[1].SquareUpdate();
+		Triangle[0].Triangleuppdate();
+		Squares[0].SquareUpdate();
+		Squares[1].SquareUpdate();
 	}
 	//std::cout << physics.velDir.x << " " << physics.velDir.y << std::endl;
 	//std::cout << physics.angle << std::endl;
