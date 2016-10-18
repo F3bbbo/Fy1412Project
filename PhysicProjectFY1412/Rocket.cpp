@@ -264,6 +264,8 @@ void Rocket::reset()
 	screenText.velocity.setString("Velocity: 0");
 	colisionfire = false;
 	unalterddt = 0;
+	P = 0;
+	onlyonece = true;
 }
 
 bool Rocket::colision(sf::Vector3f circle,Square &square)
@@ -322,7 +324,7 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	oldposition = pos;
 	}
 	if(colision == true)
-	explosions.update(physics.velDir * -220.0f * 0.1f, sf::Vector2f(oldposition.x, oldposition.y), dt * 50);// EXPLOSION
+	explosions.update(physics.velDir * -220.0f * 0.1f, sf::Vector2f(oldposition.x, oldposition.y), dt);// EXPLOSION
 	
 	if (explosioncolideswithhouse == true && onlyonece == true)
 	{

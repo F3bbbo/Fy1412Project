@@ -3,9 +3,11 @@
 #define SCREENTOWORLDTRANS 6371200.0f / 224.5f 
 void explosion::airdamping()
 {
-	t = 40000000 / 8000; //40*10^6m and 8*10^3m 
+	t = 40000000 / 8000; //40*10^6m and 8*10^3m
+	p2 = 40 * 10 ^ 6;
 	k = (log(pk / p2)) / t;
-	P=P - P*exp(-k*t);
+//	P=P - P*exp(-k*t);
+	P=P*exp(-k*t);
 	
 }
 void explosion::draw(sf::RenderTarget & target, sf::RenderStates states) const
@@ -27,9 +29,12 @@ explosion::explosion()
 	B = 0;
 	a = 0;Y = 0;G = 0; z = 0;
 	circle->setradius(0);
-	m = 2*1000000;
+	m = 200000000*1000000;
 	pk = 1000;
 	p2 = 1;
+	time = 0;
+	howlongwillitrun = 0;
+	count = 0;
 }
 
 explosion::~explosion()
@@ -95,6 +100,8 @@ void explosion::circleradiusexpansion(float dt)
 void explosion::resetfunction()
 {
 	circle->setradius(0);
+	P = 0;
+	time = 0;//yoyo kassam G
 }
 Circles explosion::circleretriver()
 {
@@ -102,6 +109,9 @@ Circles explosion::circleretriver()
 }
 void explosion::update(sf::Vector2f origin, sf::Vector2f position,float dt)
 {
+	howlongwillitrun = 500;
+//	timet = timet + dt; // orignal klockan
+	dt = dt * 50;
 	circle->setorigin(sf::Vector2f(circle->getradius()+ origin.x, circle->getradius()+ origin.y));
 //	circle->setorigin(origin);
 	circle->setpoisiton(position);
@@ -123,8 +133,17 @@ void explosion::update(sf::Vector2f origin, sf::Vector2f position,float dt)
 		circle->settexture(&ExplosionsTex[4]);
 	if (P>2000 && P<10000)
 		circle->settexture(&ExplosionsTex[5]);
-
-
+	if (P <= 1900);
+	{
+		
+	time = dt + time; //klockan efter explosion
+	if (time<=howlongwillitrun)
+	{
+//	
+		scale = time / howlongwillitrun;
+		circle->SetFillColor(sf::Color(255-(255*scale), 255 - (255 * scale), 255 - (255 * scale), 255 - (255 * scale)));
+	}
+	}
 
 	circleradiusexpansion(dt);
 

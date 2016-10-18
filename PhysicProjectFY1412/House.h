@@ -18,6 +18,7 @@ public:
 	Houses();
 	void changesprite(float P);
 	~Houses();
+	void housereset();
 	Square returnsquare();
 };
 

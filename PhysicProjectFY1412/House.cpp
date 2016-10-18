@@ -17,7 +17,7 @@ Houses::Houses()
 	Texture[0].loadFromFile("Textures\\game\\huset\\housewithglas.png");
 	sprite.setTexture(Texture[0]);
 	square= Square(200, 200);
-	positon = sf::Vector2f(900, 449+300+32);
+	positon = sf::Vector2f(930, 449+300+60);
 	scale = sf::Vector2f(0.5, 0.5);
 
 	sprite.scale(scale);
@@ -47,6 +47,12 @@ void Houses::changesprite(float P)
 Houses::~Houses()
 {
 
+}
+
+void Houses::housereset()
+{
+	sprite.setTexture(Texture[0]);
+	
 }
 
 Square Houses::returnsquare()

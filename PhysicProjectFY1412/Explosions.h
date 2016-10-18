@@ -14,6 +14,10 @@ private:
 	float Pmax, procentpart;
 	float t, k, pk, p2;//for the airdamping. 
 	void airdamping();
+	float time,howlongwillitrun;
+	float scale;
+	sf::Clock clock;
+	int count;
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	sf::Texture ExplosionsTex[6];
 public:
