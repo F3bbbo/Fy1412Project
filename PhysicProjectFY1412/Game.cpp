@@ -37,7 +37,7 @@ void Game::Update(sf::RenderWindow & window, sf::Mouse &mouse)
 	//	if (extradt >= 2)
 	//	{			 
 			colision = rocket.colision(earth.circlerxy(),house.returnsquare());
-			if (true == rocket.colisionexplosionandhouse(house.returnsquare()))
+			if (true == rocket.colisionexplosionandhouse(house.returnsquare()) || true == rocket.colisionhouse(house.returnsquare()))
 				explosioncolideswithhouse = true;
 	//	}
 		rocket.update(mouse, window, earth, dt,colision, explosioncolideswithhouse);
@@ -85,6 +85,8 @@ void Game::reset()
 {
 	running = false;
 	rocket.reset();
+	house.housereset();
+	explosioncolideswithhouse = false;
 }
 
 void Game::rocketSpin(float scale)
