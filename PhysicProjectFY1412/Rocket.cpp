@@ -34,9 +34,9 @@ Rocket::Rocket()
 	circle = std::vector<Circles>(0);
 	Triangle = std::vector<Triangles>(0);
 //	Triangles tringle1 = Triangles(sf::Vector2f(389, 277), sf::Vector2f(360, 372), sf::Vector2f(429, 371), sf::Vector2f(0, 1), sf::Vector2f(1, 0), sf::Vector2f(-1, 0));
-	Triangles tringle1 = Triangles(140);
+	Triangles tringle1 = Triangles(100);
 	Triangle.push_back(tringle1);
-	Triangle[0].setorigin(sf::Vector2f( halfRocketWidth, halfRocketHeight));
+	Triangle[0].setorigin(sf::Vector2f(Triangle[0].trianglegetwith()/2+20, halfRocketHeight));
 	Triangle[0].setpoisiton(sf::Vector2f(pos.x,pos.y));
 	Triangle[0].scale(sf::Vector2f(scale, scale));
 	Triangle[0].Triangleuppdate();

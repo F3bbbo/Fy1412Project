@@ -55,7 +55,7 @@ void Triangles::Triangleuppdate()
 	kordinatochbred[1] = triangle.getGlobalBounds().top;
 	kordinatochbred[2] = triangle.getGlobalBounds().width;
 	kordinatochbred[3] = triangle.getGlobalBounds().height;
-	triangle.setRadius(140);
+//	triangle.setRadius(140);
 	this->trianglepoint1 = sf::Vector2f(kordinatochbred[0]+(kordinatochbred[2]/2), kordinatochbred[1]);//triangle.getPoint(0);
 	this->trianglepoint2 = sf::Vector2f(kordinatochbred[0], kordinatochbred[1] + kordinatochbred[3]);
 	this->trianglepoint3 = sf::Vector2f(kordinatochbred[0] + kordinatochbred[2],kordinatochbred[1]+kordinatochbred[3]);
@@ -157,6 +157,12 @@ void Triangles::setside2normal(sf::Vector2f side2normal)
 {
 	this->side2normal = side2normal;
 
+}
+
+float Triangles::trianglegetwith()
+{
+
+	return triangle.getGlobalBounds().width;
 }
 
 void Triangles::setside3normal(sf::Vector2f side3normal)

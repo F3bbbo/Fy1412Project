@@ -36,6 +36,7 @@ public:
 	void settrianglepoint3(sf::Vector2f trianglepoint3);
 	void setside1normal(sf::Vector2f side1normal);
 	void setside2normal(sf::Vector2f side2normal);
+	float trianglegetwith();
 	void setside3normal(sf::Vector2f side3normal);
 	void rotatetriangle(float degree);
 	void movetolocalspaceandrotatetriangle(sf::Vector2f rocketpos , float degree);
