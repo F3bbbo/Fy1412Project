@@ -82,13 +82,14 @@ Rocket::~Rocket()
 void Rocket::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	//flame
+	if (colisionfire == false)
+	{
 	if (physics.thrust && physics.fuelMass > 0.0f)
 	{
 		target.draw(fireSprite);
 	}
 	//rocket
-	if(colisionfire==false)
-	{
+	
 	target.draw(rocketSprite);
 	}
 

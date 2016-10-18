@@ -94,6 +94,7 @@ Circles explosion::circleretriver()
 void explosion::update(sf::Vector2f origin, sf::Vector2f position,float dt)
 {
 	circle->setorigin(sf::Vector2f(circle->getradius(), circle->getradius()));
+//	circle->setorigin(origin);
 	circle->setpoisiton(position);
 	setd(SCREENTOWORLDTRANS*circle->getradius());
 	zcalculation();
