@@ -299,7 +299,10 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	}
 	colisionfire = colision;
 	float rocketdt;
-	rocketdt = dt * 100;
+	if( physics.fuelMass > 0.0f)
+		rocketdt = dt * 100;
+	else
+		rocketdt = dt * 400;
 
 //	circle[0].setplacex(mouse.getPosition(window).x);
 //	circle[0].setplacey(mouse.getPosition(window).y);
@@ -319,7 +322,7 @@ void Rocket::update(sf::Mouse & mouse, sf::Window & window, Earth &earth, float 
 	oldposition = pos;
 	}
 	if(colision == true)
-	explosions.update(physics.velDir * -220.0f * 0.1f, sf::Vector2f(oldposition.x, oldposition.y), rocketdt/10);// EXPLOSION
+	explosions.update(physics.velDir * -220.0f * 0.1f, sf::Vector2f(oldposition.x, oldposition.y), dt * 50);// EXPLOSION
 	
 	if (explosioncolideswithhouse == true && onlyonece == true)
 	{
