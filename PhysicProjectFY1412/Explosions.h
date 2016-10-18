@@ -12,6 +12,8 @@ private:
 	float P, a, B, Y, G, z; //P = overpressure, a,b,y,g variables for formle, and z is so you can create a b y g. 
 	float d, m; //d= how long to check the over pressure, m = the mass of the explosives.
 	float Pmax, procentpart;
+	float t, k, pk, p2;//for the airdamping. 
+	void airdamping();
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 	sf::Texture ExplosionsTex[6];
 public:

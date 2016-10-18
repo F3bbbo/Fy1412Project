@@ -1,6 +1,13 @@
 #include "Explosions.h"
 #define WORLDTOSCREENTRANS 224.5f / 6371200.0f
 #define SCREENTOWORLDTRANS 6371200.0f / 224.5f 
+void explosion::airdamping()
+{
+	t = 40000000 / 8000; //40*10^6m and 8*10^3m 
+	k = (log(pk / p2)) / t;
+	P=P - P*exp(-k*t);
+	
+}
 void explosion::draw(sf::RenderTarget & target, sf::RenderStates states) const
 {
 	target.draw(*circle);
@@ -21,6 +28,8 @@ explosion::explosion()
 	a = 0;Y = 0;G = 0; z = 0;
 	circle->setradius(0);
 	m = 2*1000000;
+	pk = 1000;
+	p2 = 1;
 }
 
 explosion::~explosion()
@@ -76,7 +85,7 @@ float explosion::getP()
 
 void explosion::circleradiusexpansion(float dt)
 {
-	if (P <= 1000)
+	if (P <= 1900)
 	{
 
 	}
@@ -103,6 +112,7 @@ void explosion::update(sf::Vector2f origin, sf::Vector2f position,float dt)
 	Ycalculation();
 	Gcalculation();
 	Pressurecalculation();
+	airdamping();
 	if(P>60000 && P<70000)
 		circle->settexture(&ExplosionsTex[1]);
 	if (P>40000 && P<60000)
