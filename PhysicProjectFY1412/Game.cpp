@@ -9,7 +9,7 @@ Game::Game()
 	explosioncolideswithhouse = false;
 	extradt = 0;
 	textFont.loadFromFile("Textures\\fonts\\STENCIL.TTF");
-	background.loadFromFile("Textures\\game\\background\\girls.png");
+	background.loadFromFile("Textures\\game\\background\\sky.png");
 	backgrund.setTexture(background);
 	startText.setFont(textFont);
 	startText.setPosition(500, 20);
